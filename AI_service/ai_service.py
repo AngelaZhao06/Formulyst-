@@ -44,12 +44,13 @@ def check_ingredients(payload, threshold=0.86):
     tokens = _tokenize(payload)
     analysis = []
 
+    seen_ids = set()
     for raw in tokens:
         item, conf, matched_alias = _lookup_exact(raw)
         if not item:
             item, conf, matched_alias = _lookup_fuzzy(raw, threshold=threshold)
-
-        if item:
+        if item and item["id"] not in seen_ids:
+            seen_ids.add(item["id"])
             analysis.append({
                 "query": raw,
                 "matched_alias": matched_alias,
@@ -68,7 +69,7 @@ def check_ingredients(payload, threshold=0.86):
                 "source_consumer": item.get("source_consumer", ""),
                 "confidence": round(conf, 2),
             })
-        else:
+        '''else:
             analysis.append({
                 "query": raw,
                 "matched_alias": None,
@@ -86,8 +87,7 @@ def check_ingredients(payload, threshold=0.86):
                 "source_scientific": "",
                 "source_consumer": "",
                 "confidence": 0.0,
-            })
-
+            })'''
     summary = {
         "high": sum(1 for r in analysis if r["hazard_level"] == "High"),
         "medium": sum(1 for r in analysis if r["hazard_level"] == "Medium"),
@@ -97,4 +97,4 @@ def check_ingredients(payload, threshold=0.86):
     }
     return {"analysis": analysis, "summary": summary}
 
-               
+print("\n\n\n" , check_ingredients({"ingredients": ["slat", "water", "Fragrance", "1,3-Butadiene"]}, threshold=0.86)["summary"])          
