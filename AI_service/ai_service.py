@@ -1,6 +1,26 @@
 import json, re
 from rapidfuzz import fuzz, process
 import os, json
+from PIL import Image
+import pytesseract
+
+
+
+def extract_text_from_image(image_path: str) -> str:
+    img = Image.open(image_path)
+    text = pytesseract.image_to_string(img)
+    return text
+
+def parse_ingredients(text: str) -> dict:
+    # Remove line breaks
+    cleaned = re.sub(r'[\n\r]', ' ', text)
+    # Split by commas
+    parts = [p.strip() for p in cleaned.split(",") if p.strip()]
+    return {"ingredients": parts}
+def create_ingredient_dict(image_path: str) -> dict:
+    text = extract_text_from_image(image_path)
+    return parse_ingredients(text)
+
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -69,7 +89,7 @@ def check_ingredients(payload, threshold=0.86):
                 "source_consumer": item.get("source_consumer", ""),
                 "confidence": round(conf, 2),
             })
-        '''else:
+        else:
             analysis.append({
                 "query": raw,
                 "matched_alias": None,
@@ -87,7 +107,7 @@ def check_ingredients(payload, threshold=0.86):
                 "source_scientific": "",
                 "source_consumer": "",
                 "confidence": 0.0,
-            })'''
+            })
     summary = {
         "high": sum(1 for r in analysis if r["hazard_level"] == "High"),
         "medium": sum(1 for r in analysis if r["hazard_level"] == "Medium"),
@@ -97,4 +117,13 @@ def check_ingredients(payload, threshold=0.86):
     }
     return {"analysis": analysis, "summary": summary}
 
-print("\n\n\n" , check_ingredients({"ingredients": ["slat", "water", "Fragrance", "1,3-Butadiene"]}, threshold=0.86)["summary"])          
+file_path = "/Users/yasemannikoo/projects/Formulyst-/AI_service/Screenshot2.png"
+
+# Step 1: OCR
+ingredients = create_ingredient_dict(file_path)
+print("OCR Ingredients:", ingredients)
+
+# Step 2: Hazard check
+hazard_results = check_ingredients(ingredients)["summary"]
+print("Hazard Results:", hazard_results)
+
