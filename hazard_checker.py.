@@ -1,6 +1,0 @@
-import json
-def check_ingradiant(text):
-    ingradiantList= text.split()
-    with open("hazardous_ingradien.JSON"){
-        
-    }
