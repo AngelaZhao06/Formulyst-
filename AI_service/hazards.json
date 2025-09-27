@@ -1,0 +1,1309 @@
+[
+  {
+    "name": "Formaldehyde",
+    "cas": [
+      "50-00-0"
+    ],
+    "aliases": [
+      "Formalin",
+      "Methanal",
+      "Methylene glycol"
+    ],
+    "hazard_level": "High",
+    "recommendation": "Never",
+    "categories": [
+      "carcinogen",
+      "sensitizer",
+      "respiratory_irritant"
+    ],
+    "reasons": [
+      "Known human carcinogen",
+      "Releases vapours that can cause sensitization"
+    ],
+    "regulatory_CA": "restricted (not permitted in aerosols; max 0.2% as preservative; special limits)",
+    "regulatory_EU": "restricted",
+    "prop65": true,
+    "source_regulatory": "Health Canada Hotlist; EU Cosmetics Regulation",
+    "source_scientific": "IARC Monograph; SCCS Opinion on formaldehyde and MG",
+    "source_consumer": "EWG Skin Deep",
+    "id": "ing_formaldehyde_5cfa1358"
+  },
+  {
+    "name": "Benzene",
+    "cas": [
+      "71-43-2"
+    ],
+    "aliases": [],
+    "hazard_level": "High",
+    "recommendation": "Never",
+    "categories": [
+      "carcinogen",
+      "mutagen"
+    ],
+    "reasons": [
+      "Known human carcinogen"
+    ],
+    "regulatory_CA": "prohibited",
+    "regulatory_EU": "prohibited",
+    "prop65": true,
+    "source_regulatory": "Health Canada Hotlist (prohibited)",
+    "source_scientific": "IARC Monograph on Benzene",
+    "source_consumer": "EWG Skin Deep",
+    "id": "ing_benzene_88c2e133"
+  },
+  {
+    "name": "Lead and its compounds",
+    "cas": [
+      "7439-92-1"
+    ],
+    "aliases": [
+      "Lead acetate (301-04-2)"
+    ],
+    "hazard_level": "High",
+    "recommendation": "Never",
+    "categories": [
+      "reprotoxic",
+      "neurotoxic",
+      "heavy_metal"
+    ],
+    "reasons": [
+      "Reproductive toxicity",
+      "Neurotoxic heavy metal"
+    ],
+    "regulatory_CA": "prohibited",
+    "regulatory_EU": "prohibited",
+    "prop65": true,
+    "source_regulatory": "Health Canada Hotlist (prohibited)",
+    "source_scientific": "ATSDR Toxicological Profile for Lead",
+    "source_consumer": "EWG Skin Deep",
+    "id": "ing_lead_and_its_compounds_25ee2d81"
+  },
+  {
+    "name": "Mercury compounds (incl. Thimerosal)",
+    "cas": [
+      "7439-97-6",
+      "54-64-8",
+      "21908-53-2",
+      "62-38-4",
+      "94-43-9",
+      "102-98-7",
+      "6273-99-0"
+    ],
+    "aliases": [
+      "Thimerosal",
+      "Phenylmercuric acetate",
+      "Phenylmercuric benzoate",
+      "Phenylmercuric borate",
+      "Mercuric oxide"
+    ],
+    "hazard_level": "High",
+    "recommendation": "Never",
+    "categories": [
+      "neurotoxic",
+      "reprotoxic",
+      "heavy_metal"
+    ],
+    "reasons": [
+      "Neurotoxicity and reproductive toxicity; bioaccumulation"
+    ],
+    "regulatory_CA": "prohibited (cosmetics)",
+    "regulatory_EU": "prohibited (Annex II)",
+    "prop65": true,
+    "source_regulatory": "Health Canada Hotlist; EU Annex II",
+    "source_scientific": "WHO/IPCS Mercury assessment",
+    "source_consumer": "EWG Skin Deep",
+    "id": "ing_mercury_compounds_incl_thimerosal_11090890"
+  },
+  {
+    "name": "Cadmium and its compounds",
+    "cas": [
+      "7440-43-9"
+    ],
+    "aliases": [],
+    "hazard_level": "High",
+    "recommendation": "Never",
+    "categories": [
+      "carcinogen",
+      "heavy_metal"
+    ],
+    "reasons": [
+      "Carcinogenic heavy metal"
+    ],
+    "regulatory_CA": "prohibited",
+    "regulatory_EU": "prohibited",
+    "prop65": true,
+    "source_regulatory": "Health Canada Hotlist (prohibited); EU Annex II",
+    "source_scientific": "IARC Monograph on Cadmium",
+    "source_consumer": "EWG Skin Deep",
+    "id": "ing_cadmium_and_its_compounds_6efd5793"
+  },
+  {
+    "name": "Arsenic and its compounds",
+    "cas": [
+      "7440-38-2"
+    ],
+    "aliases": [],
+    "hazard_level": "High",
+    "recommendation": "Never",
+    "categories": [
+      "carcinogen",
+      "heavy_metal"
+    ],
+    "reasons": [
+      "Carcinogenic heavy metal"
+    ],
+    "regulatory_CA": "prohibited",
+    "regulatory_EU": "prohibited",
+    "prop65": true,
+    "source_regulatory": "Health Canada Hotlist; EU Annex II",
+    "source_scientific": "IARC Monograph on Arsenic",
+    "source_consumer": "EWG Skin Deep",
+    "id": "ing_arsenic_and_its_compounds_1be602ed"
+  },
+  {
+    "name": "Chromium VI compounds (as Cr VI)",
+    "cas": [
+      "18540-29-9"
+    ],
+    "aliases": [
+      "Hexavalent chromium"
+    ],
+    "hazard_level": "High",
+    "recommendation": "Never",
+    "categories": [
+      "carcinogen",
+      "sensitizer",
+      "heavy_metal"
+    ],
+    "reasons": [
+      "Carcinogenic; strong skin sensitizer"
+    ],
+    "regulatory_CA": "prohibited",
+    "regulatory_EU": "prohibited",
+    "prop65": true,
+    "source_regulatory": "Health Canada Hotlist; EU Annex II",
+    "source_scientific": "IARC Monograph on Chromium(VI)",
+    "source_consumer": "EWG Skin Deep",
+    "id": "ing_chromium_vi_compounds_as_cr_vi_0a04432a"
+  },
+  {
+    "name": "Coal tars (crude and refined)",
+    "cas": [
+      "8007-45-2"
+    ],
+    "aliases": [
+      "Coal tar"
+    ],
+    "hazard_level": "High",
+    "recommendation": "Never",
+    "categories": [
+      "carcinogen",
+      "PAH"
+    ],
+    "reasons": [
+      "Contains PAHs with carcinogenic potential"
+    ],
+    "regulatory_CA": "prohibited",
+    "regulatory_EU": "prohibited",
+    "prop65": true,
+    "source_regulatory": "Health Canada Hotlist (prohibited)",
+    "source_scientific": "IARC evaluations of coal tars/PAHs",
+    "source_consumer": "EWG Skin Deep",
+    "id": "ing_coal_tars_crude_and_refined_4fdfb979"
+  },
+  {
+    "name": "1,4-Dioxane (as contaminant)",
+    "cas": [
+      "123-91-1"
+    ],
+    "aliases": [
+      "Dioxane"
+    ],
+    "hazard_level": "High",
+    "recommendation": "Never",
+    "categories": [
+      "carcinogen",
+      "contaminant"
+    ],
+    "reasons": [
+      "Probable human carcinogen; contaminant in ethoxylated surfactants"
+    ],
+    "regulatory_CA": "prohibited (as added); impurity should be minimized",
+    "regulatory_EU": "prohibited (Annex II when used as substance)",
+    "prop65": true,
+    "source_regulatory": "Health Canada Hotlist; EU Annex II",
+    "source_scientific": "EPA IRIS on 1,4-Dioxane",
+    "source_consumer": "EWG Skin Deep",
+    "id": "ing_1_4_dioxane_as_contaminant_f15bc3b3"
+  },
+  {
+    "name": "Benzidine and its salts",
+    "cas": [
+      "92-87-5"
+    ],
+    "aliases": [],
+    "hazard_level": "High",
+    "recommendation": "Never",
+    "categories": [
+      "carcinogen"
+    ],
+    "reasons": [
+      "Known human carcinogen"
+    ],
+    "regulatory_CA": "prohibited",
+    "regulatory_EU": "prohibited",
+    "prop65": true,
+    "source_regulatory": "Health Canada Hotlist; EU Annex II",
+    "source_scientific": "IARC Monograph on Benzidine",
+    "source_consumer": "EWG Skin Deep",
+    "id": "ing_benzidine_and_its_salts_9bc62362"
+  },
+  {
+    "name": "Nitrosamines (N-nitrosodiethanolamine etc.)",
+    "cas": [
+      "1116-54-7",
+      "62-75-9",
+      "55-18-5",
+      "100-75-4"
+    ],
+    "aliases": [
+      "NDELA",
+      "NDEA",
+      "NDMA",
+      "NMEA"
+    ],
+    "hazard_level": "High",
+    "recommendation": "Never",
+    "categories": [
+      "carcinogen",
+      "contaminant"
+    ],
+    "reasons": [
+      "Potent carcinogens; should not be present"
+    ],
+    "regulatory_CA": "prohibited",
+    "regulatory_EU": "prohibited",
+    "prop65": true,
+    "source_regulatory": "Health Canada Hotlist; EU Annex II",
+    "source_scientific": "IARC Monographs on nitrosamines",
+    "source_consumer": "EWG Skin Deep",
+    "id": "ing_nitrosamines_n_nitrosodiethanolamine_etc_a2b11f71"
+  },
+  {
+    "name": "Parabens (Methyl-, Ethyl-, Propyl-, Butyl-)",
+    "cas": [
+      "99-76-3",
+      "120-47-8",
+      "94-13-3",
+      "94-26-8"
+    ],
+    "aliases": [
+      "Parabens",
+      "Methylparaben",
+      "Ethylparaben",
+      "Propylparaben",
+      "Butylparaben"
+    ],
+    "hazard_level": "High",
+    "recommendation": "Restricted",
+    "categories": [
+      "endocrine_disruptor",
+      "preservative"
+    ],
+    "reasons": [
+      "Endocrine activity; restrictions in certain regions"
+    ],
+    "regulatory_CA": "restricted",
+    "regulatory_EU": "restricted",
+    "prop65": false,
+    "source_regulatory": "Health Canada Hotlist (restrictions); EU SCCS opinions",
+    "source_scientific": "SCCS opinions on parabens",
+    "source_consumer": "EWG Skin Deep",
+    "id": "ing_parabens_methyl_ethyl_propyl_butyl_29bf0ed0"
+  },
+  {
+    "name": "Phthalates (e.g., DEHP, DBP)",
+    "cas": [
+      "117-81-7",
+      "84-74-2"
+    ],
+    "aliases": [
+      "DEHP",
+      "DBP",
+      "Diethylhexyl phthalate",
+      "Dibutyl phthalate"
+    ],
+    "hazard_level": "High",
+    "recommendation": "Never",
+    "categories": [
+      "endocrine_disruptor",
+      "reprotoxic",
+      "plasticizer"
+    ],
+    "reasons": [
+      "Reproductive toxicity; endocrine disruption"
+    ],
+    "regulatory_CA": "prohibited/restricted (certain uses)",
+    "regulatory_EU": "prohibited (Annex II) for certain",
+    "prop65": true,
+    "source_regulatory": "Health Canada Hotlist; EU Annex II",
+    "source_scientific": "SCCP/SCCS opinions; NTP CERHR",
+    "source_consumer": "EWG Skin Deep",
+    "id": "ing_phthalates_e_g_dehp_dbp_ba56d895"
+  },
+  {
+    "name": "Oxybenzone (Benzophenone-3)",
+    "cas": [
+      "131-57-7"
+    ],
+    "aliases": [
+      "Benzophenone-3",
+      "BP-3"
+    ],
+    "hazard_level": "High",
+    "recommendation": "Restricted",
+    "categories": [
+      "UV_filter",
+      "endocrine_disruptor",
+      "reef_toxic"
+    ],
+    "reasons": [
+      "Endocrine activity data; environmental (coral) concern"
+    ],
+    "regulatory_CA": "restricted",
+    "regulatory_EU": "restricted",
+    "prop65": false,
+    "source_regulatory": "Health Canada Hotlist (restrictions); EU SCCS 2021 opinion",
+    "source_scientific": "SCCS Opinion 2021",
+    "source_consumer": "EWG Skin Deep",
+    "id": "ing_oxybenzone_benzophenone_3_6d5f4b41"
+  },
+  {
+    "name": "Hydroquinone",
+    "cas": [
+      "123-31-9"
+    ],
+    "aliases": [
+      "1,4-Dihydroxybenzene"
+    ],
+    "hazard_level": "High",
+    "recommendation": "Restricted",
+    "categories": [
+      "sensitizer",
+      "skin_lightening_agent"
+    ],
+    "reasons": [
+      "Skin sensitization; strict limits by product type"
+    ],
+    "regulatory_CA": "restricted",
+    "regulatory_EU": "restricted",
+    "prop65": false,
+    "source_regulatory": "Health Canada Hotlist (restrictions); EU Annex III",
+    "source_scientific": "CIR Review; SCCS opinions",
+    "source_consumer": "EWG Skin Deep",
+    "id": "ing_hydroquinone_16f31420"
+  },
+  {
+    "name": "p-Phenylenediamine (PPD)",
+    "cas": [
+      "106-50-3"
+    ],
+    "aliases": [
+      "PPD",
+      "p-Phenylenediamine HCl (624-18-0)",
+      "p-Phenylenediamine sulfate (16245-77-5)"
+    ],
+    "hazard_level": "High",
+    "recommendation": "Restricted",
+    "categories": [
+      "sensitizer",
+      "allergen",
+      "hair_dye"
+    ],
+    "reasons": [
+      "Strong sensitizer; restricted to oxidative hair dyes"
+    ],
+    "regulatory_CA": "restricted (not for skin use)",
+    "regulatory_EU": "restricted (Annex III)",
+    "prop65": false,
+    "source_regulatory": "Health Canada Hotlist; EU Annex III",
+    "source_scientific": "SCCS opinions on PPD",
+    "source_consumer": "EWG Skin Deep",
+    "id": "ing_p_phenylenediamine_ppd_26df4c53"
+  },
+  {
+    "name": "Resorcinol",
+    "cas": [
+      "108-46-3"
+    ],
+    "aliases": [
+      "1,3-Dihydroxybenzene"
+    ],
+    "hazard_level": "Medium",
+    "recommendation": "Restricted",
+    "categories": [
+      "sensitizer",
+      "hair_dye"
+    ],
+    "reasons": [
+      "Irritation/sensitization; not permitted for general skin use"
+    ],
+    "regulatory_CA": "restricted",
+    "regulatory_EU": "restricted",
+    "prop65": false,
+    "source_regulatory": "Health Canada Hotlist; EU Annex III",
+    "source_scientific": "CIR Review",
+    "source_consumer": "EWG Skin Deep",
+    "id": "ing_resorcinol_63c98cc0"
+  },
+  {
+    "name": "Triclosan",
+    "cas": [
+      "3380-34-5"
+    ],
+    "aliases": [],
+    "hazard_level": "Medium",
+    "recommendation": "Restricted",
+    "categories": [
+      "antimicrobial",
+      "eco_toxic",
+      "endocrine_activity"
+    ],
+    "reasons": [
+      "Environmental persistence; endocrine activity concerns; strict oral limits"
+    ],
+    "regulatory_CA": "restricted",
+    "regulatory_EU": "restricted/banned in some uses",
+    "prop65": false,
+    "source_regulatory": "Health Canada Hotlist; EU opinions",
+    "source_scientific": "CIR Review; EPA assessments",
+    "source_consumer": "EWG Skin Deep",
+    "id": "ing_triclosan_c1b7a8fe"
+  },
+  {
+    "name": "Methylisothiazolinone (MI)",
+    "cas": [
+      "2682-20-4"
+    ],
+    "aliases": [
+      "MI"
+    ],
+    "hazard_level": "Medium",
+    "recommendation": "Restricted",
+    "categories": [
+      "sensitizer",
+      "preservative"
+    ],
+    "reasons": [
+      "Potent contact sensitizer; not permitted in leave-on in CA/EU"
+    ],
+    "regulatory_CA": "restricted (no leave-on; rinse-off ≤0.0015%)",
+    "regulatory_EU": "restricted (no leave-on; rinse-off ≤0.0015%)",
+    "prop65": false,
+    "source_regulatory": "Health Canada Hotlist; EU Annex V/III decisions",
+    "source_scientific": "SCCS Opinions on MI",
+    "source_consumer": "EWG Skin Deep",
+    "id": "ing_methylisothiazolinone_mi_877a25ef"
+  },
+  {
+    "name": "Methylchloroisothiazolinone/Methylisothiazolinone (MCI/MI)",
+    "cas": [
+      "26172-55-4",
+      "2682-20-4"
+    ],
+    "aliases": [
+      "Kathon CG",
+      "MCI/MI"
+    ],
+    "hazard_level": "Medium",
+    "recommendation": "Restricted",
+    "categories": [
+      "sensitizer",
+      "preservative"
+    ],
+    "reasons": [
+      "Potent sensitizer; only allowed in rinse-off at low levels"
+    ],
+    "regulatory_CA": "restricted (rinse-off ≤0.0015%)",
+    "regulatory_EU": "restricted (rinse-off ≤0.0015%)",
+    "prop65": false,
+    "source_regulatory": "Health Canada Hotlist; EU Annex V/III",
+    "source_scientific": "SCCS Opinions",
+    "source_consumer": "EWG Skin Deep",
+    "id": "ing_methylchloroisothiazolinone_methylisothiazolinone_mci_mi_fc11c20d"
+  },
+  {
+    "name": "Alpha-Hydroxy Acids (e.g., Glycolic, Lactic)",
+    "cas": [
+      "79-14-1",
+      "50-21-5",
+      "77-92-9"
+    ],
+    "aliases": [
+      "Glycolic acid",
+      "Lactic acid",
+      "Citric acid (AHA)"
+    ],
+    "hazard_level": "Medium",
+    "recommendation": "Restricted",
+    "categories": [
+      "exfoliant",
+      "irritant",
+      "photosensitizer"
+    ],
+    "reasons": [
+      "Irritation/photosensitivity; concentration and pH limits"
+    ],
+    "regulatory_CA": "restricted (3–30% with pH limits & warnings)",
+    "regulatory_EU": "restricted (Annex III as applicable)",
+    "prop65": false,
+    "source_regulatory": "Health Canada Hotlist; EU Annex III (various)",
+    "source_scientific": "CIR AHA report",
+    "source_consumer": "EWG Skin Deep",
+    "id": "ing_alpha_hydroxy_acids_e_g_glycolic_lactic_c32c6409"
+  },
+  {
+    "name": "Salicylic Acid",
+    "cas": [
+      "69-72-7"
+    ],
+    "aliases": [
+      "2-Hydroxybenzoic acid",
+      "BHA (note: not butylated hydroxyanisole)"
+    ],
+    "hazard_level": "Medium",
+    "recommendation": "Restricted",
+    "categories": [
+      "keratolytic",
+      "irritant"
+    ],
+    "reasons": [
+      "Irritation; concentration limits by product type"
+    ],
+    "regulatory_CA": "restricted (e.g., ≤2% typical leave-on)",
+    "regulatory_EU": "restricted (Annex III)",
+    "prop65": false,
+    "source_regulatory": "Health Canada Hotlist; EU Annex III",
+    "source_scientific": "CIR Review of Salicylic acid",
+    "source_consumer": "EWG Skin Deep",
+    "id": "ing_salicylic_acid_67af5618"
+  },
+  {
+    "name": "Retinol and its esters (Vitamin A)",
+    "cas": [
+      "68-26-8",
+      "79-81-2",
+      "127-47-9",
+      "631-89-0",
+      "7069-42-3"
+    ],
+    "aliases": [
+      "Retinyl palmitate",
+      "Retinyl acetate",
+      "Retinyl linoleate",
+      "Retinyl propionate"
+    ],
+    "hazard_level": "Medium",
+    "recommendation": "Restricted",
+    "categories": [
+      "vitamin_a_derivative",
+      "photosensitizer"
+    ],
+    "reasons": [
+      "Concentration limits; potential irritation/photosensitivity"
+    ],
+    "regulatory_CA": "restricted (e.g., 0.2% full-body leave-on)",
+    "regulatory_EU": "under evaluation/restricted in some contexts",
+    "prop65": false,
+    "source_regulatory": "Health Canada Hotlist (limits)",
+    "source_scientific": "SCCS/Scientific opinions",
+    "source_consumer": "EWG Skin Deep",
+    "id": "ing_retinol_and_its_esters_vitamin_a_d59ce776"
+  },
+  {
+    "name": "Retinal (Retinaldehyde)",
+    "cas": [
+      "116-31-4"
+    ],
+    "aliases": [
+      "Retinaldehyde"
+    ],
+    "hazard_level": "Medium",
+    "recommendation": "Restricted",
+    "categories": [
+      "vitamin_a_derivative"
+    ],
+    "reasons": [
+      "Concentration limits by product type"
+    ],
+    "regulatory_CA": "restricted",
+    "regulatory_EU": "under evaluation/restricted in some contexts",
+    "prop65": false,
+    "source_regulatory": "Health Canada Hotlist",
+    "source_scientific": "SCCS opinions",
+    "source_consumer": "EWG Skin Deep",
+    "id": "ing_retinal_retinaldehyde_eb147cf0"
+  },
+  {
+    "name": "Benzophenone",
+    "cas": [
+      "119-61-9"
+    ],
+    "aliases": [],
+    "hazard_level": "Medium",
+    "recommendation": "Restricted",
+    "categories": [
+      "UV_absorber",
+      "sensitizer"
+    ],
+    "reasons": [
+      "Sensitization concerns; limits apply"
+    ],
+    "regulatory_CA": "restricted",
+    "regulatory_EU": "restricted",
+    "prop65": true,
+    "source_regulatory": "Health Canada Hotlist; EU Annex III",
+    "source_scientific": "SCCS opinions",
+    "source_consumer": "EWG Skin Deep",
+    "id": "ing_benzophenone_3e46dfd8"
+  },
+  {
+    "name": "Benzoyl Peroxide (nails)",
+    "cas": [
+      "94-36-0"
+    ],
+    "aliases": [],
+    "hazard_level": "Medium",
+    "recommendation": "Restricted",
+    "categories": [
+      "sensitizer",
+      "oxidizer"
+    ],
+    "reasons": [
+      "Irritation; professional-use limits in nails"
+    ],
+    "regulatory_CA": "restricted (nail products professional use)",
+    "regulatory_EU": "restricted (Annex III)",
+    "prop65": false,
+    "source_regulatory": "Health Canada Hotlist",
+    "source_scientific": "CIR Review",
+    "source_consumer": "EWG Skin Deep",
+    "id": "ing_benzoyl_peroxide_nails_fa5287f0"
+  },
+  {
+    "name": "Aluminum Chloride (Antiperspirant)",
+    "cas": [
+      "7446-70-0",
+      "7784-13-6"
+    ],
+    "aliases": [
+      "Aluminum chloride hexahydrate"
+    ],
+    "hazard_level": "Medium",
+    "recommendation": "Restricted",
+    "categories": [
+      "antiperspirant_active",
+      "irritant"
+    ],
+    "reasons": [
+      "Aerosol prohibition; concentration and form limits"
+    ],
+    "regulatory_CA": "restricted (e.g., ≤15% soln; not in aerosol)",
+    "regulatory_EU": "allowed/restricted",
+    "prop65": false,
+    "source_regulatory": "Health Canada Hotlist (conditions)",
+    "source_scientific": "CIR safety assessments",
+    "source_consumer": "EWG Skin Deep",
+    "id": "ing_aluminum_chloride_antiperspirant_e9cd9e3c"
+  },
+  {
+    "name": "Aluminum Chlorohydrate & complexes",
+    "cas": [
+      "12042-91-0",
+      "1327-41-9"
+    ],
+    "aliases": [
+      "Aluminum chlorohydrex",
+      "ACH complexes"
+    ],
+    "hazard_level": "Low",
+    "recommendation": "Restricted",
+    "categories": [
+      "antiperspirant_active"
+    ],
+    "reasons": [
+      "Concentration limits; not combined with other aluminum complexes"
+    ],
+    "regulatory_CA": "restricted (≤25% anhydrous; labeling)",
+    "regulatory_EU": "allowed",
+    "prop65": false,
+    "source_regulatory": "Health Canada Hotlist (conditions)",
+    "source_scientific": "CIR assessments",
+    "source_consumer": "EWG Skin Deep",
+    "id": "ing_aluminum_chlorohydrate_complexes_f88cf3be"
+  },
+  {
+    "name": "Aluminum Zirconium complexes",
+    "cas": [
+      "98106-55-9",
+      "98106-54-8"
+    ],
+    "aliases": [
+      "Aluminum zirconium tetrachlorohydrex GLY, etc."
+    ],
+    "hazard_level": "Low",
+    "recommendation": "Restricted",
+    "categories": [
+      "antiperspirant_active"
+    ],
+    "reasons": [
+      "Not permitted in aerosols; concentration limits"
+    ],
+    "regulatory_CA": "restricted (no aerosols; ≤20% anhydrous)",
+    "regulatory_EU": "allowed",
+    "prop65": false,
+    "source_regulatory": "Health Canada Hotlist (conditions)",
+    "source_scientific": "CIR assessments",
+    "source_consumer": "EWG Skin Deep",
+    "id": "ing_aluminum_zirconium_complexes_4b03ffa0"
+  },
+  {
+    "name": "Boric acid and borates",
+    "cas": [
+      "10043-35-3",
+      "11113-50-1",
+      "1303-96-4"
+    ],
+    "aliases": [
+      "Borax",
+      "Sodium borate",
+      "Sodium tetraborate"
+    ],
+    "hazard_level": "Medium",
+    "recommendation": "Restricted",
+    "categories": [
+      "reprotoxic",
+      "pH_adjuster"
+    ],
+    "reasons": [
+      "Reproductive toxicity concerns; strict use limits"
+    ],
+    "regulatory_CA": "restricted (0.1% as pH adjuster; ≤5% others)",
+    "regulatory_EU": "restricted",
+    "prop65": true,
+    "source_regulatory": "Health Canada Hotlist",
+    "source_scientific": "ECHA dossiers; CICAD",
+    "source_consumer": "EWG Skin Deep",
+    "id": "ing_boric_acid_and_borates_dc8b4ec4"
+  },
+  {
+    "name": "Methanol (Methyl alcohol)",
+    "cas": [
+      "67-56-1"
+    ],
+    "aliases": [
+      "Methyl alcohol"
+    ],
+    "hazard_level": "High",
+    "recommendation": "Restricted",
+    "categories": [
+      "toxic",
+      "solvent"
+    ],
+    "reasons": [
+      "Toxic if ingested; child-resistant container rules"
+    ],
+    "regulatory_CA": "restricted (packaging requirements)",
+    "regulatory_EU": "restricted/industrial",
+    "prop65": true,
+    "source_regulatory": "Health Canada Hotlist (conditions)",
+    "source_scientific": "ATSDR Toxicological profile",
+    "source_consumer": "EWG Skin Deep",
+    "id": "ing_methanol_methyl_alcohol_d6895bd8"
+  },
+  {
+    "name": "Methylene Chloride (Dichloromethane)",
+    "cas": [
+      "75-09-2"
+    ],
+    "aliases": [
+      "Dichloromethane"
+    ],
+    "hazard_level": "High",
+    "recommendation": "Restricted",
+    "categories": [
+      "carcinogen",
+      "solvent"
+    ],
+    "reasons": [
+      "Suspected carcinogen; not allowed in aerosols"
+    ],
+    "regulatory_CA": "restricted (no aerosols)",
+    "regulatory_EU": "restricted/industrial",
+    "prop65": true,
+    "source_regulatory": "Health Canada Hotlist",
+    "source_scientific": "IARC Monograph on DCM",
+    "source_consumer": "EWG Skin Deep",
+    "id": "ing_methylene_chloride_dichloromethane_e29d54f7"
+  },
+  {
+    "name": "1,3-Butadiene (as impurity in propellants)",
+    "cas": [
+      "106-99-0"
+    ],
+    "aliases": [],
+    "hazard_level": "High",
+    "recommendation": "Restricted",
+    "categories": [
+      "carcinogen",
+      "impurity"
+    ],
+    "reasons": [
+      "Known carcinogen; limit in butane/isobutane (<0.1% w/w)"
+    ],
+    "regulatory_CA": "restricted (limit as impurity)",
+    "regulatory_EU": "restricted",
+    "prop65": true,
+    "source_regulatory": "Health Canada Hotlist (limit)",
+    "source_scientific": "IARC Monograph on 1,3-Butadiene",
+    "source_consumer": "EWG Skin Deep",
+    "id": "ing_1_3_butadiene_as_impurity_in_propellants_36668d3e"
+  },
+  {
+    "name": "Talc (loose powders)",
+    "cas": [
+      "14807-96-6"
+    ],
+    "aliases": [],
+    "hazard_level": "Medium",
+    "recommendation": "Restricted",
+    "categories": [
+      "inhalation_hazard"
+    ],
+    "reasons": [
+      "Inhalation hazard; genital use restrictions; max % in loose powders"
+    ],
+    "regulatory_CA": "restricted (multiple conditions; labeling)",
+    "regulatory_EU": "allowed",
+    "prop65": false,
+    "source_regulatory": "Health Canada Hotlist (conditions)",
+    "source_scientific": "CIR Safety assessment of Talc",
+    "source_consumer": "EWG Skin Deep",
+    "id": "ing_talc_loose_powders_6c1bbd30"
+  },
+  {
+    "name": "Fragrance / Parfum (allergens)",
+    "cas": [],
+    "aliases": [
+      "Parfum",
+      "Aroma"
+    ],
+    "hazard_level": "Medium",
+    "recommendation": "Restricted",
+    "categories": [
+      "allergen",
+      "sensitizer",
+      "mixture"
+    ],
+    "reasons": [
+      "Undisclosed mixture; EU allergen labeling list"
+    ],
+    "regulatory_CA": "allowed (labeling)",
+    "regulatory_EU": "restricted (Annex III allergens)",
+    "prop65": false,
+    "source_regulatory": "EU Annex III Fragrance allergens; IFRA",
+    "source_scientific": "SCCS fragrance allergen opinions",
+    "source_consumer": "EWG Skin Deep",
+    "id": "ing_fragrance_parfum_allergens_30782c47"
+  },
+  {
+    "name": "Sodium Lauryl Sulfate (SLS)",
+    "cas": [
+      "151-21-3"
+    ],
+    "aliases": [
+      "SDS",
+      "Sodium dodecyl sulfate"
+    ],
+    "hazard_level": "Medium",
+    "recommendation": "Safe but criticized",
+    "categories": [
+      "irritant",
+      "surfactant",
+      "aquatic_toxicity"
+    ],
+    "reasons": [
+      "Skin/eye irritation; aquatic toxicity"
+    ],
+    "regulatory_CA": "allowed",
+    "regulatory_EU": "allowed",
+    "prop65": false,
+    "source_regulatory": "General cosmetic permissions",
+    "source_scientific": "CIR Safety assessment of SLS",
+    "source_consumer": "EWG Skin Deep",
+    "id": "ing_sodium_lauryl_sulfate_sls_b7ab16a1"
+  },
+  {
+    "name": "Sodium Laureth Sulfate (SLES)",
+    "cas": [
+      "9004-82-4"
+    ],
+    "aliases": [
+      "SLES",
+      "Sodium lauryl ether sulfate"
+    ],
+    "hazard_level": "Low",
+    "recommendation": "Safe but criticized",
+    "categories": [
+      "irritant",
+      "surfactant",
+      "contaminant_risk"
+    ],
+    "reasons": [
+      "Irritation potential; may contain 1,4-dioxane as impurity if not vacuum-stripped"
+    ],
+    "regulatory_CA": "allowed",
+    "regulatory_EU": "allowed",
+    "prop65": false,
+    "source_regulatory": "General cosmetic permissions",
+    "source_scientific": "CIR assessments",
+    "source_consumer": "EWG Skin Deep",
+    "id": "ing_sodium_laureth_sulfate_sles_e2f219ea"
+  },
+  {
+    "name": "Phenoxyethanol",
+    "cas": [
+      "122-99-6"
+    ],
+    "aliases": [],
+    "hazard_level": "Medium",
+    "recommendation": "Restricted",
+    "categories": [
+      "preservative",
+      "irritant"
+    ],
+    "reasons": [
+      "Restricted typically to ≤1% in many jurisdictions"
+    ],
+    "regulatory_CA": "restricted (≤1% typical)",
+    "regulatory_EU": "restricted (Annex V)",
+    "prop65": false,
+    "source_regulatory": "EU Annex V; Health Canada positions",
+    "source_scientific": "SCCS Opinion 2016",
+    "source_consumer": "EWG Skin Deep",
+    "id": "ing_phenoxyethanol_b5b1eb43"
+  },
+  {
+    "name": "BHA (Butylated Hydroxyanisole)",
+    "cas": [
+      "25013-16-5"
+    ],
+    "aliases": [
+      "Butylated hydroxyanisole"
+    ],
+    "hazard_level": "High",
+    "recommendation": "Restricted",
+    "categories": [
+      "endocrine_activity",
+      "antioxidant"
+    ],
+    "reasons": [
+      "Potential carcinogenicity/endocrine effects; limits apply"
+    ],
+    "regulatory_CA": "restricted",
+    "regulatory_EU": "restricted/banned in some uses",
+    "prop65": true,
+    "source_regulatory": "Prop 65; EU opinions",
+    "source_scientific": "CIR Review; NTP",
+    "source_consumer": "EWG Skin Deep",
+    "id": "ing_bha_butylated_hydroxyanisole_5eb1b5f3"
+  },
+  {
+    "name": "BHT (Butylated Hydroxytoluene)",
+    "cas": [
+      "128-37-0"
+    ],
+    "aliases": [
+      "Butylated hydroxytoluene"
+    ],
+    "hazard_level": "Medium",
+    "recommendation": "Safe but criticized",
+    "categories": [
+      "antioxidant",
+      "endocrine_activity"
+    ],
+    "reasons": [
+      "Endocrine activity data; allowed with limits"
+    ],
+    "regulatory_CA": "allowed",
+    "regulatory_EU": "allowed/restricted",
+    "prop65": false,
+    "source_regulatory": "EU opinions; general allowances",
+    "source_scientific": "CIR Review",
+    "source_consumer": "EWG Skin Deep",
+    "id": "ing_bht_butylated_hydroxytoluene_75a560e1"
+  },
+  {
+    "name": "Toluene-2,5-diamine (and sulfate)",
+    "cas": [
+      "95-70-5",
+      "615-50-9"
+    ],
+    "aliases": [
+      "TDA",
+      "Toluene-2,5-diamine sulfate"
+    ],
+    "hazard_level": "High",
+    "recommendation": "Restricted",
+    "categories": [
+      "sensitizer",
+      "hair_dye"
+    ],
+    "reasons": [
+      "Sensitizer; labeling and usage restrictions"
+    ],
+    "regulatory_CA": "restricted (hair dyes only; warnings)",
+    "regulatory_EU": "restricted (Annex III)",
+    "prop65": false,
+    "source_regulatory": "Health Canada Hotlist; EU Annex III",
+    "source_scientific": "SCCS opinions",
+    "source_consumer": "EWG Skin Deep",
+    "id": "ing_toluene_2_5_diamine_and_sulfate_b7287b76"
+  },
+  {
+    "name": "Tricresyl phosphate",
+    "cas": [
+      "1330-78-5"
+    ],
+    "aliases": [
+      "TCP",
+      "Tritolyl phosphate"
+    ],
+    "hazard_level": "High",
+    "recommendation": "Never",
+    "categories": [
+      "neurotoxic",
+      "organophosphate"
+    ],
+    "reasons": [
+      "Neurotoxicity concerns"
+    ],
+    "regulatory_CA": "prohibited/restricted",
+    "regulatory_EU": "prohibited in cosmetics",
+    "prop65": true,
+    "source_regulatory": "Health Canada Hotlist; EU Annex II",
+    "source_scientific": "Toxicology literature",
+    "source_consumer": "EWG Skin Deep",
+    "id": "ing_tricresyl_phosphate_860bb3ec"
+  },
+  {
+    "name": "Talc (with asbestos-free specification)",
+    "cas": [
+      "14807-96-6"
+    ],
+    "aliases": [
+      "Cosmetic talc"
+    ],
+    "hazard_level": "Low",
+    "recommendation": "Restricted",
+    "categories": [
+      "inhalation_hazard"
+    ],
+    "reasons": [
+      "Ensure asbestos-free; follow Canadian limits"
+    ],
+    "regulatory_CA": "restricted",
+    "regulatory_EU": "allowed",
+    "prop65": false,
+    "source_regulatory": "Health Canada Hotlist",
+    "source_scientific": "CIR Talc updates",
+    "source_consumer": "EWG Skin Deep",
+    "id": "ing_talc_with_asbestos_free_specification_26ef68e9"
+  },
+  {
+    "name": "Benzalkonium chloride",
+    "cas": [
+      "8001-54-5",
+      "68424-85-1",
+      "68391-01-5",
+      "61789-71-7"
+    ],
+    "aliases": [
+      "BAC",
+      "Alkyl dimethyl benzyl ammonium chloride"
+    ],
+    "hazard_level": "Medium",
+    "recommendation": "Restricted",
+    "categories": [
+      "preservative",
+      "sensitizer"
+    ],
+    "reasons": [
+      "Irritation/sensitization; leave-on limits"
+    ],
+    "regulatory_CA": "restricted (≤0.1% preservative; cond. agent limits)",
+    "regulatory_EU": "restricted",
+    "prop65": false,
+    "source_regulatory": "Health Canada Hotlist",
+    "source_scientific": "CIR review",
+    "source_consumer": "EWG Skin Deep",
+    "id": "ing_benzalkonium_chloride_46f7fe00"
+  },
+  {
+    "name": "Benzethonium chloride",
+    "cas": [
+      "121-54-0"
+    ],
+    "aliases": [],
+    "hazard_level": "Medium",
+    "recommendation": "Restricted",
+    "categories": [
+      "preservative",
+      "sensitizer"
+    ],
+    "reasons": [
+      "Not for mucous membranes; limits for leave-on/rinse-off"
+    ],
+    "regulatory_CA": "restricted",
+    "regulatory_EU": "restricted",
+    "prop65": false,
+    "source_regulatory": "Health Canada Hotlist",
+    "source_scientific": "CIR review",
+    "source_consumer": "EWG Skin Deep",
+    "id": "ing_benzethonium_chloride_5c64f97b"
+  },
+  {
+    "name": "Sodium perborate / Peroxides",
+    "cas": [
+      "7632-04-4",
+      "7722-84-1",
+      "124-43-6",
+      "1335-26-8",
+      "1305-79-9"
+    ],
+    "aliases": [
+      "Hydrogen peroxide",
+      "Urea peroxide",
+      "Magnesium peroxide",
+      "Calcium peroxide"
+    ],
+    "hazard_level": "Medium",
+    "recommendation": "Restricted",
+    "categories": [
+      "oxidizer",
+      "irritant"
+    ],
+    "reasons": [
+      "Oral and eye-area restrictions; labeling and max % apply"
+    ],
+    "regulatory_CA": "restricted (various limits by product)",
+    "regulatory_EU": "restricted",
+    "prop65": false,
+    "source_regulatory": "Health Canada Hotlist (Peroxide section)",
+    "source_scientific": "CIR / safety dossiers",
+    "source_consumer": "EWG Skin Deep",
+    "id": "ing_sodium_perborate_peroxides_69a9c0bc"
+  },
+  {
+    "name": "Eucalyptus oil (certain chemotypes)",
+    "cas": [
+      "8000-48-4",
+      "85203-56-1",
+      "91771-69-6",
+      "90028-48-1"
+    ],
+    "aliases": [
+      "Eucalyptus globulus leaf oil",
+      "Eucalyptus radiata oil"
+    ],
+    "hazard_level": "Low",
+    "recommendation": "Restricted",
+    "categories": [
+      "essential_oil",
+      "ingestion_hazard"
+    ],
+    "reasons": [
+      "Child safety labeling; ingestion hazard warnings"
+    ],
+    "regulatory_CA": "restricted (label warnings; limits)",
+    "regulatory_EU": "allowed with IFRA limits",
+    "prop65": false,
+    "source_regulatory": "Health Canada Hotlist",
+    "source_scientific": "IFRA Standards context",
+    "source_consumer": "EWG Skin Deep",
+    "id": "ing_eucalyptus_oil_certain_chemotypes_215ab0f2"
+  },
+  {
+    "name": "Methyl eugenol (as fragrance component)",
+    "cas": [
+      "93-15-2"
+    ],
+    "aliases": [],
+    "hazard_level": "High",
+    "recommendation": "Restricted",
+    "categories": [
+      "carcinogen",
+      "fragrance_component"
+    ],
+    "reasons": [
+      "Strict concentration caps by product type"
+    ],
+    "regulatory_CA": "restricted (very low % caps)",
+    "regulatory_EU": "restricted (Annex III)",
+    "prop65": true,
+    "source_regulatory": "Health Canada Hotlist; EU Annex III",
+    "source_scientific": "JECFA/SCCS opinions",
+    "source_consumer": "EWG Skin Deep",
+    "id": "ing_methyl_eugenol_as_fragrance_component_1dbe0273"
+  },
+  {
+    "name": "Triclocarban",
+    "cas": [
+      "101-20-2"
+    ],
+    "aliases": [
+      "TCC"
+    ],
+    "hazard_level": "Medium",
+    "recommendation": "Restricted",
+    "categories": [
+      "antimicrobial",
+      "eco_toxic"
+    ],
+    "reasons": [
+      "Environmental concerns; restricted/banned in some regions"
+    ],
+    "regulatory_CA": "restricted",
+    "regulatory_EU": "restricted/banned in some uses",
+    "prop65": false,
+    "source_regulatory": "Regulatory communications (various)",
+    "source_scientific": "CIR Review",
+    "source_consumer": "EWG Skin Deep",
+    "id": "ing_triclocarban_cbcd0975"
+  },
+  {
+    "name": "Bisphenol A (BPA)",
+    "cas": [
+      "80-05-7"
+    ],
+    "aliases": [
+      "BPA",
+      "4,4'-Isopropylidenediphenol"
+    ],
+    "hazard_level": "High",
+    "recommendation": "Never",
+    "categories": [
+      "endocrine_disruptor"
+    ],
+    "reasons": [
+      "Endocrine disruption; restrictions across regulators"
+    ],
+    "regulatory_CA": "prohibited/restricted",
+    "regulatory_EU": "prohibited in many uses",
+    "prop65": true,
+    "source_regulatory": "Health Canada Hotlist (prohibited entry for BPA); EU measures",
+    "source_scientific": "EFSA/SCCS opinions",
+    "source_consumer": "EWG Skin Deep",
+    "id": "ing_bisphenol_a_bpa_61b0730c"
+  }
+]
