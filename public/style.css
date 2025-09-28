@@ -1,0 +1,42 @@
+/* Basic styling for scan ingredient page */
+.scan-ingredient-container {
+    max-width: 400px;
+    margin: 60px auto;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(157,129,137,0.12);
+    padding: 2.5rem 2rem;
+    text-align: center;
+}
+.scan-ingredient-container h1 {
+    font-family: 'Playfair Display', serif;
+    color: #D72660;
+    margin-bottom: 1.5rem;
+}
+.form-group {
+    margin-bottom: 1.5rem;
+}
+#brand-name {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 8px;
+    border: 1px solid #F4ACB7;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+}
+button {
+    margin: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    background: #F4ACB7;
+    color: #fff;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+button:hover {
+    background: #D72660;
+}
