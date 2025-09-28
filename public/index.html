@@ -4,62 +4,131 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Formulyst</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@500&display=swap"
+      rel="stylesheet"
+    />
 
     <style>
       body {
-        background: linear-gradient(135deg, #D8E2DC 0%, #FFE5D9 25%, #FFCAD4 50%, #F4ACB7 75%, #9D8189 100%);
+        background: linear-gradient(
+          135deg,
+          #d8e2dc 0%,
+          #ffe5d9 25%,
+          #ffcad4 50%,
+          #f4acb7 75%,
+          #9d8189 100%
+        );
         min-height: 100vh;
         position: relative;
+        overflow-y: auto;
       }
       .makeup-bg {
         position: absolute;
-        top: 0; left: 0; width: 100%; height: 100%;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
         pointer-events: none;
         opacity: 0.12;
         z-index: 0;
-        background: url('https://raw.githubusercontent.com/angelazhao06/formulyst-assets/main/makeup-bg.svg') center/cover no-repeat;
+        background: url("https://raw.githubusercontent.com/angelazhao06/formulyst-assets/main/makeup-bg.svg")
+          center/cover no-repeat;
       }
       .fancy-title {
-        font-family: 'Playfair Display', serif;
+        font-family: "Playfair Display", serif;
         letter-spacing: 1px;
       }
     </style>
     <style>
       body {
-        background: linear-gradient(135deg, #D8E2DC 0%, #FFE5D9 25%, #FFCAD4 50%, #F4ACB7 75%, #9D8189 100%);
+        background: linear-gradient(
+          135deg,
+          #d8e2dc 0%,
+          #ffe5d9 25%,
+          #ffcad4 50%,
+          #f4acb7 75%,
+          #9d8189 100%
+        );
         min-height: 100vh;
         position: relative;
+        overflow-y: auto;
       }
       .makeup-bg {
         position: absolute;
-        top: 0; left: 0; width: 100%; height: 100%;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
         pointer-events: none;
         opacity: 0.12;
         z-index: 0;
-        background: url('https://raw.githubusercontent.com/angelazhao06/formulyst-assets/main/makeup-bg.svg') center/cover no-repeat;
+        background: url("https://raw.githubusercontent.com/angelazhao06/formulyst-assets/main/makeup-bg.svg")
+          center/cover no-repeat;
       }
     </style>
   </head>
   <body class="min-h-screen flex flex-col relative overflow-hidden">
     <div class="makeup-bg"></div>
     <header class="flex justify-end items-center p-6 z-10">
-      <button class="text-[#9D8189] font-semibold mr-4 hover:text-[#F4ACB7] transition">Log In</button>
-  <button class="text-black bg-[#F4ACB7] px-4 py-2 rounded-lg shadow hover:bg-[#FFCAD4] transition">Sign Up</button>
+      <button
+        class="text-[#9D8189] font-semibold mr-4 hover:text-[#F4ACB7] transition"
+      >
+        Log In
+      </button>
+      <button
+        class="text-black bg-[#F4ACB7] px-4 py-2 rounded-lg shadow hover:bg-[#FFCAD4] transition"
+      >
+        Sign Up
+      </button>
     </header>
     <main class="flex flex-1 flex-col items-center justify-center z-10">
-  <h1 class="fancy-title text-8xl font-bold mt-16 mb-4 drop-shadow-lg" style="color: #000;">Formulyst</h1>
-  <p class="tagline text-xl mb-8" style="font-family: 'Montserrat', sans-serif;">Scan your makeup ingredients and build your safe beauty closet.</p>
+      <h1
+        class="fancy-title text-8xl font-bold mt-16 mb-4 drop-shadow-lg"
+        style="color: #000"
+      >
+        Formulyst
+      </h1>
+      <p
+        class="tagline text-xl mb-8"
+        style="font-family: 'Montserrat', sans-serif"
+      >
+        Scan your makeup ingredients and build your safe beauty closet.
+      </p>
       <div class="flex space-x-20 mb-12">
-  <a href="scan-ingredient.html">
-    <button class="bg-[#D72660] text-white px-10 py-4 rounded-xl shadow-lg hover:bg-[#FFB400] hover:text-black text-xl font-semibold transition duration-200 hover:shadow-2xl">Scan Ingredient</button>
-  </a>
+        <a href="scan-ingredient.html">
+          <button
+            class="bg-[#D72660] text-white px-10 py-4 rounded-xl shadow-lg hover:bg-[#FFB400] hover:text-black text-xl font-semibold transition duration-200 hover:shadow-2xl"
+          >
+            Scan Ingredient
+          </button>
+        </a>
         <a href="closet.html">
-          <button class="bg-[#1B998B] text-white px-10 py-4 rounded-xl shadow-lg hover:bg-[#D72660] hover:text-black text-xl font-semibold transition duration-200 hover:shadow-2xl">Create Personal Closet</button>
+          <button
+            class="bg-[#1B998B] text-white px-10 py-4 rounded-xl shadow-lg hover:bg-[#D72660] hover:text-black text-xl font-semibold transition duration-200 hover:shadow-2xl"
+          >
+            Create Personal Closet
+          </button>
         </a>
       </div>
-  <!-- Removed bar under buttons -->
+      <div class="flex flex-col items-center mb-12" style="display: none">
+        <div
+          id="risk-report"
+          class="w-full max-w-2xl bg-white rounded-xl shadow p-8"
+        >
+          <h2 class="text-2xl font-bold mb-4 text-[#D72660]">
+            Risk & Environment Report
+          </h2>
+          <div id="risk-content" class="space-y-6"></div>
+        </div>
+      </div>
     </main>
+    <script>
+      // Remove homepage report rendering
+    </script>
   </body>
 </html>

@@ -36,17 +36,13 @@
           var(--pink-4) 75%,
           var(--pink-5) 100%
         );
-        /* was overflow:hidden; */
         overflow-y: auto;
         position: relative;
-        padding: 24px; /* helps on small screens */
+        padding: 24px;
       }
       .makeup-bg {
         position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
+        inset: 0;
         pointer-events: none;
         opacity: 0.12;
         z-index: 0;
@@ -66,12 +62,6 @@
         font-weight: 600;
         box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
         cursor: pointer;
-      }
-      .back-btn svg {
-        vertical-align: middle;
-        margin-right: 8px;
-        width: 16px;
-        height: 16px;
       }
       .panel {
         background: #fff;
@@ -126,7 +116,6 @@
       .search-btn:hover {
         box-shadow: 0 8px 32px rgba(246, 114, 167, 0.35) !important;
       }
-      /* decorative icons */
       .icon-left,
       .icon-right {
         position: fixed;
@@ -144,7 +133,6 @@
         width: 120px;
         opacity: 0.28;
       }
-      /* hearts */
       .heart {
         position: fixed;
         opacity: 0.34;
@@ -179,7 +167,7 @@
   </head>
   <body>
     <div class="makeup-bg"></div>
-    <!-- back: explicit home link -->
+
     <button
       class="back-btn"
       onclick="window.location.href='/public/index.html'"
@@ -385,57 +373,308 @@
           />
         </div>
 
-        <!-- ⬇️ added: scan button + results under preview -->
+        <!-- scan button + results -->
         <div style="margin-top: 12px">
-          <button type="button" id="scan">Scan Ingredients</button>
+          <button
+            type="button"
+            id="scan"
+            style="
+              display: none;
+              width: 100%;
+              background: linear-gradient(90deg, #f672a7, #fcb7d4);
+              color: #fff;
+              font-weight: 700;
+              font-size: 1.25rem;
+              padding: 16px 0;
+              border: none;
+              border-radius: 999px;
+              box-shadow: 0 4px 16px rgba(246, 114, 167, 0.18);
+              margin-bottom: 12px;
+              cursor: pointer;
+              letter-spacing: 0.5px;
+              transition: box-shadow 0.2s;
+            "
+            onmouseover="this.style.boxShadow='0 8px 32px rgba(246, 114, 167, 0.35)'"
+            onmouseout="this.style.boxShadow='0 4px 16px rgba(246, 114, 167, 0.18)'"
+          >
+            Scan Ingredients
+          </button>
         </div>
-        <pre id="result" style="white-space: pre-wrap; margin-top: 8px"></pre>
 
-        <!-- hidden file input -->
+        <pre
+          id="result"
+          style="white-space: pre-wrap; margin-top: 8px; display: none"
+        ></pre>
+
+        <div class="flex flex-col items-center mb-12">
+          <div
+            id="risk-report"
+            class="w-full max-w-2xl bg-white rounded-xl shadow p-8"
+            style="display: none; margin-top: 24px"
+          >
+            <h2 class="text-2xl font-bold mb-4" style="color: #d72660">
+              Risk & Environment Report
+            </h2>
+            <div id="risk-content" class="space-y-6"></div>
+          </div>
+        </div>
+
+        <!-- hidden file input (mobile camera supported) -->
         <input
           id="file-input"
           type="file"
           accept="image/*"
+          capture="environment"
           style="display: none"
         />
       </form>
     </main>
 
-    <!-- your existing JS file (upload + camera logic) -->
-    <script src="/public/scan-ingredient.js"></script>
-
-    <!-- small helper to POST the selected/captured file to Flask -->
     <script>
-      // Update this if your Flask port/host differs
-      const API_BASE = "http://127.0.0.1:8080";
+      // ---------- Helpers ----------
+      function getRiskIndicator(score) {
+        if (score <= 33)
+          return {
+            color: "#1B998B",
+            label: "🟢 Low",
+            bg: "bg-green-100",
+            text: "text-green-700",
+          };
+        if (score <= 66)
+          return {
+            color: "#F4ACB7",
+            label: "🟠 Moderate",
+            bg: "bg-orange-100",
+            text: "text-orange-700",
+          };
+        return {
+          color: "#D72660",
+          label: "🔴 High",
+          bg: "bg-red-100",
+          text: "text-red-700",
+        };
+      }
+      function normalizeHazardLevel(x) {
+        const v = String(x || "")
+          .trim()
+          .toLowerCase();
+        if (v === "high" || v === "h" || v === "severe") return "High";
+        if (v === "medium" || v === "moderate" || v === "m" || v === "med")
+          return "Medium";
+        if (v === "low" || v === "l") return "Low";
+        return "Unknown";
+      }
 
+      // ---------- Renderer ----------
+      function renderRiskReport(data) {
+        const container = document.getElementById("risk-content");
+        if (!data || !data.analysis) {
+          container.innerHTML =
+            '<div class="text-gray-500 text-left font-medium">No report data found.</div>';
+          return;
+        }
+        let html = "";
+
+        // Scores from backend (0–100)
+        const healthScore = data.summary?.health_score ?? 0;
+        const envScore = data.summary?.environment_score ?? 0;
+        const healthIndicator = getRiskIndicator(healthScore);
+        const envIndicator = getRiskIndicator(envScore);
+
+        html += `<div class="flex flex-col sm:flex-row justify-center items-center gap-6 mb-8">
+          <div class="flex flex-col items-center">
+            <span class="text-lg font-bold mb-1" style="color:${healthIndicator.color};">Health Risk</span>
+            <span class="inline-block px-4 py-2 rounded-full ${healthIndicator.bg} ${healthIndicator.text} font-black text-base">${healthIndicator.label} <span style="font-size:0.95em;">(${healthScore}/100)</span></span>
+          </div>
+          <div class="flex flex-col items-center">
+            <span class="text-lg font-bold mb-1" style="color:${envIndicator.color};">Environmental Risk</span>
+            <span class="inline-block px-4 py-2 rounded-full ${envIndicator.bg} ${envIndicator.text} font-black text-base">${envIndicator.label} <span style="font-size:0.95em;">(${envScore}/100)</span></span>
+          </div>
+        </div>`;
+
+        // Health hazards
+        const healthHazards = data.analysis.filter(
+          (it) => normalizeHazardLevel(it.hazard_level) !== "Unknown"
+        );
+        if (healthHazards.length) {
+          html +=
+            '<h3 class="text-3xl font-extrabold mb-6 text-center" style="color:#D72660;">🩺 Health Hazards</h3>';
+          healthHazards.forEach((it) => {
+            const level = normalizeHazardLevel(it.hazard_level);
+            const levelClass =
+              level === "High"
+                ? "bg-red-100 text-red-700"
+                : level === "Medium"
+                ? "bg-orange-100 text-orange-700"
+                : level === "Low"
+                ? "bg-green-100 text-green-700"
+                : "bg-slate-100 text-slate-700";
+            const levelLabel =
+              level === "High"
+                ? "⚠️ High"
+                : level === "Medium"
+                ? "🟠 Medium"
+                : level === "Low"
+                ? "🟢 Low"
+                : "❔ Unknown";
+
+            html += `<div class="mb-6 p-5 rounded-xl border bg-gray-50" style="text-align:left;">
+              <div class="font-black mb-2 flex items-center" style="font-size:1.35rem; font-family: 'Playfair Display', serif;">
+                <span style="margin-right:10px;">🔬</span>${it.name}
+              </div>
+              <div class="font-black text-sm mb-1 flex items-center" style="font-size:1.1rem;">
+                <span style="margin-right:8px;">🧭</span><span class="font-black">Hazard Level:</span>
+                <span class="inline-block px-2 py-0.5 rounded-full text-xs font-black ml-2 ${levelClass}">${levelLabel}</span>
+              </div>
+              ${
+                it.reasons?.length
+                  ? `<div class="mt-2 text-sm text-gray-700 font-black flex items-center"><span style="margin-right:8px;">❓</span>Why hazardous?</div><div class="text-sm text-gray-700 ml-7 mb-2">${it.reasons.join(
+                      "; "
+                    )}</div>`
+                  : ""
+              }
+              <div class="mt-2 text-sm text-gray-700 font-black flex items-center"><span style="margin-right:8px;">🌍</span>Sources:</div>
+              <ul class="list-disc pl-7 text-xs text-gray-600 mt-1">
+                ${[
+                  it.source_regulatory,
+                  it.source_scientific,
+                  it.source_consumer,
+                ]
+                  .filter(Boolean)
+                  .map((s) => `<li>${s}</li>`)
+                  .join("")}
+              </ul>
+            </div>`;
+          });
+        }
+
+        // Environmental hazards
+        const envHazards = data.analysis.filter((it) => {
+          const ei = it.environmental_impact || {};
+          return [ei.aquatic_toxicity, ei.bioaccumulation, ei.persistence].some(
+            (l) => /high|moderate/i.test(l || "")
+          );
+        });
+        if (envHazards.length) {
+          html +=
+            '<h3 class="text-3xl font-extrabold mb-6 text-center" style="color:#1B998B;">🌱 Environmental Hazards</h3>';
+          envHazards.forEach((it) => {
+            const ei = it.environmental_impact || {};
+            html += `<div class="mb-6 p-5 rounded-xl border bg-gray-50" style="text-align:left;">
+              <div class="font-black mb-2 flex items-center" style="font-size:1.35rem; font-family: 'Playfair Display', serif;">
+                <span style="margin-right:10px;">🔬</span>${it.name}
+              </div>
+              <div class="grid sm:grid-cols-3 gap-2 text-sm mb-2">
+                ${
+                  ei.aquatic_toxicity &&
+                  /high|moderate/i.test(ei.aquatic_toxicity)
+                    ? `<div class="font-black flex items-center"><span style="margin-right:8px;">💧</span>Aquatic toxicity: <span class="font-normal ml-1">${ei.aquatic_toxicity}</span></div>`
+                    : ""
+                }
+                ${
+                  ei.bioaccumulation &&
+                  /high|moderate/i.test(ei.bioaccumulation)
+                    ? `<div class="font-black flex items-center"><span style="margin-right:8px;">🦠</span>Bioaccumulation: <span class="font-normal ml-1">${ei.bioaccumulation}</span></div>`
+                    : ""
+                }
+                ${
+                  ei.persistence && /high|moderate/i.test(ei.persistence)
+                    ? `<div class="font-black flex items-center"><span style="margin-right:8px;">⏳</span>Persistence: <span class="font-normal ml-1">${ei.persistence}</span></div>`
+                    : ""
+                }
+              </div>
+              ${
+                it.reasons?.length
+                  ? `<div class="mt-2 text-sm text-gray-700 font-black flex items-center"><span style="margin-right:8px;">❓</span>Why hazardous? <span class="font-normal ml-2">${it.reasons.join(
+                      "; "
+                    )}</span></div>`
+                  : ""
+              }
+              <div class="mt-2 text-sm text-gray-700 font-black flex items-center"><span style="margin-right:8px;">🌍</span>Sources:</div>
+              <ul class="list-disc pl-7 text-xs text-gray-600 mt-1">
+                ${[
+                  it.source_regulatory,
+                  it.source_scientific,
+                  it.source_consumer,
+                ]
+                  .filter(Boolean)
+                  .map((s) => `<li>${s}</li>`)
+                  .join("")}
+              </ul>
+            </div>`;
+          });
+        }
+
+        container.innerHTML = html;
+      }
+
+      // ---------- Bind once ----------
       document.addEventListener("DOMContentLoaded", () => {
+        if (window.__FORMULYST_BOUND__) return;
+        window.__FORMULYST_BOUND__ = true;
+
         const scanBtn = document.getElementById("scan");
         const fileInput = document.getElementById("file-input");
         const resultEl = document.getElementById("result");
+        const riskReport = document.getElementById("risk-report");
+        const uploadBtn = document.getElementById("upload-picture");
+        const takeBtn = document.getElementById("take-picture");
+        const preview = document.getElementById("preview");
+        const previewImg = document.getElementById("preview-img");
 
-        if (!scanBtn) return;
+        // Trigger native picker
+        if (uploadBtn)
+          uploadBtn.addEventListener("click", () => fileInput.click());
+        // Use camera on mobile (same input), also opens picker
+        if (takeBtn) takeBtn.addEventListener("click", () => fileInput.click());
 
-        scanBtn.addEventListener("click", async () => {
-          const file = fileInput.files && fileInput.files[0];
-          if (!file) {
-            alert("Please upload or capture an image first.");
-            return;
-          }
-          const form = new FormData();
-          form.append("image", file);
+        // When a file is chosen, show preview and reveal scan button
+        if (fileInput) {
+          fileInput.addEventListener("change", () => {
+            const f = fileInput.files && fileInput.files[0];
+            if (!f) return;
+            const url = URL.createObjectURL(f);
+            previewImg.src = url;
+            preview.style.display = "block";
+            scanBtn.style.display = "block";
+            document.getElementById("brand-name").style.display = "none";
+            uploadBtn.style.display = "none";
+            takeBtn.style.display = "none";
+            document.querySelector(".search-btn").style.display = "none";
+          });
+        }
 
-          try {
-            const res = await fetch(`${API_BASE}/check-ingredients`, {
-              method: "POST",
-              body: form,
-            });
-            const data = await res.json();
-            resultEl.textContent = JSON.stringify(data, null, 2);
-          } catch (e) {
-            resultEl.textContent = "Error: " + e.message;
-          }
-        });
+        // Call the API
+        if (scanBtn) {
+          scanBtn.addEventListener("click", async () => {
+            const file = fileInput.files && fileInput.files[0];
+            if (!file) {
+              alert("Please upload or capture an image first.");
+              return;
+            }
+            const form = new FormData();
+            form.append("image", file);
+
+            try {
+              const res = await fetch(
+                "http://127.0.0.1:8080/check-ingredients",
+                {
+                  method: "POST",
+                  body: form,
+                }
+              );
+              const data = await res.json();
+              localStorage.setItem("formulyst_report", JSON.stringify(data));
+              resultEl.style.display = "none";
+              riskReport.style.display = "block";
+              renderRiskReport(data);
+            } catch (e) {
+              resultEl.textContent = "Error: " + e.message;
+              resultEl.style.display = "block";
+              riskReport.style.display = "none";
+            }
+          });
+        }
       });
     </script>
   </body>

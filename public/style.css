@@ -62,3 +62,129 @@ button:hover {
   overflow: auto;
   box-shadow: 0 2px 8px rgba(0,0,0,0.07);
 }
+.scan-results {
+  margin-top: 24px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  padding: 1.5rem;
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.scan-results h2 {
+  font-size: 1.3rem;
+  color: #D72660;
+  margin-bottom: 1rem;
+}
+.scan-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+.scan-table th, .scan-table td {
+  padding: 0.75rem 0.5rem;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+}
+.scan-table th {
+  background: #F4ACB7;
+  color: #fff;
+  font-weight: 600;
+}
+.scan-table td.hazard-high { color: #D72660; font-weight: bold; }
+.scan-table td.hazard-medium { color: #F4ACB7; font-weight: bold; }
+.scan-table td.hazard-low { color: #6BCB77; font-weight: bold; }
+.scan-table td.hazard-unknown { color: #888; }
+.scan-results-cards {
+  margin-top: 32px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.09);
+  padding: 2rem 1.5rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.scan-results-cards h2 {
+  font-size: 1.5rem;
+  color: #D72660;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+}
+.scan-card {
+  width: 100%;
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background: #f8f8fa;
+  border-radius: 10px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+  margin-bottom: 1.2rem;
+  padding: 1.2rem 1.5rem;
+  border-left: 8px solid #F4ACB7;
+  align-self: center;
+  transition: box-shadow 0.2s;
+}
+.scan-card:hover {
+  box-shadow: 0 4px 16px rgba(215,38,96,0.10);
+}
+.scan-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.scan-card-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #D72660;
+  font-family: 'Montserrat', sans-serif;
+}
+.scan-card-hazard {
+  padding: 0.4em 1em;
+  border-radius: 18px;
+  font-size: 1em;
+  font-weight: 700;
+  background: #eee;
+  color: #fff;
+  margin-left: 0.5em;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+.scan-card-hazard.hazard-high { background: #D72660; }
+.scan-card-hazard.hazard-medium { background: #F4ACB7; color: #fff; }
+.scan-card-hazard.hazard-low { background: #6BCB77; color: #fff; }
+.scan-card-hazard.hazard-unknown { background: #888; color: #fff; }
+.scan-card-body {
+  font-size: 1.05em;
+  color: #222;
+  margin-top: 0.7em;
+}
+.scan-card-recommend {
+  font-style: italic;
+  color: #222;
+}
+.scan-summary {
+  font-size: 1.1rem;
+  background: #f8f8fa;
+  border-radius: 8px;
+  padding: 1rem;
+  color: #222;
+  margin-top: 1.5rem;
+  text-align: center;
+  max-width: 520px;
+  align-self: center;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+}
+.scan-summary .summary-high { color: #D72660; font-weight: bold; }
+.scan-summary .summary-medium { color: #F4ACB7; font-weight: bold; }
+.scan-summary .summary-low { color: #6BCB77; font-weight: bold; }
+.scan-summary .summary-unknown { color: #888; }
+.scan-summary .summary-total { color: #222; font-weight: bold; }

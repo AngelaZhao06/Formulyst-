@@ -3,8 +3,6 @@ from rapidfuzz import fuzz, process
 from PIL import Image
 import pytesseract
 
-
-
 def extract_text_from_image(image_path: str) -> str:
     img = Image.open(image_path)
     text = pytesseract.image_to_string(img)
@@ -16,12 +14,10 @@ def parse_ingredients(text: str) -> dict:
     # Split by commas
     parts = [p.strip() for p in cleaned.split(",") if p.strip()]
     return {"ingredients": parts}
+
 def create_ingredient_dict(image_path: str) -> dict:
     text = extract_text_from_image(image_path)
     return parse_ingredients(text)
-    
-
-
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -30,7 +26,6 @@ with open(os.path.join(BASE_DIR, "alias_index.json"), "r", encoding="utf-8") as 
 
 with open(os.path.join(BASE_DIR, "hazards_with_environment.json"), "r", encoding="utf-8") as f:
     HAZARDS = json.load(f)
-
 
 # Build id -> item map
 ITEM_BY_ID = {h["id"]: h for h in HAZARDS}
@@ -60,21 +55,23 @@ def _lookup_fuzzy(token_norm, threshold=0.86):
             id_ = ALIAS_MAP[alias_key]
             return ITEM_BY_ID[id_], score/100.0, alias_key
     return None, 0.0, None
+
 def _level_from_text(value: str) -> str:
     if not value:
         return "Unknown"
     v = value.lower()
-    if "high" in v: 
+    if "high" in v:
         return "High"
-    if "moderate" in v or "medium" in v: 
+    if "moderate" in v or "medium" in v:
         return "Moderate"
-    if "low" in v: 
+    if "low" in v:
         return "Low"
-    if "variable" in v: 
+    if "variable" in v:
         return "Variable"
-    if "unknown" in v: 
+    if "unknown" in v:
         return "Unknown"
     return "Unknown"
+
 def _env_block(item: dict) -> dict:
     env = (item.get("environmental_impact") or {})
     return {
@@ -82,6 +79,51 @@ def _env_block(item: dict) -> dict:
         "aquatic_toxicity": env.get("aquatic_toxicity", "Unknown"),
         "bioaccumulation": env.get("bioaccumulation", "Unknown"),
     }
+
+# -------------------- Scoring helpers --------------------
+
+_HEALTH_WEIGHT = {"High": 1.0, "Medium": 0.6, "Low": 0.3}
+_ENV_WEIGHT = {"High": 1.0, "Moderate": 0.6, "Low": 0.2, "Unknown": 0.5, "Variable": 0.6}
+
+def _clamp01(x: float) -> float:
+    return max(0.0, min(1.0, x))
+
+def _compute_health_score(analysis_items) -> int:
+    """
+    0–100 (higher = worse).
+    Per-item base from hazard_level, +0.15 if endocrine-related category, +0.2 if Prop65.
+    """
+    if not analysis_items:
+        return 0
+    per_item = []
+    for it in analysis_items:
+        base = _HEALTH_WEIGHT.get(it.get("hazard_level"), 0.3)
+        cats = it.get("categories") or []
+        endocrine_bump = 0.15 if any(re.search(r"endocrine", c, re.I) for c in cats) else 0.0
+        prop65_bump = 0.2 if it.get("prop65") else 0.0
+        per_item.append(_clamp01(base + endocrine_bump + prop65_bump))
+    avg = sum(per_item) / len(per_item)
+    return int(round(avg * 100))
+
+def _compute_environment_score(analysis_items) -> int:
+    """
+    0–100 (higher = worse).
+    For each item: average of weights for aquatic_toxicity, bioaccumulation, persistence.
+    Overall score = average across items.
+    """
+    if not analysis_items:
+        return 0
+    per_item = []
+    for it in analysis_items:
+        env = it.get("environmental_impact") or {}
+        a = _ENV_WEIGHT.get(_level_from_text(env.get("aquatic_toxicity")), 0.5)
+        b = _ENV_WEIGHT.get(_level_from_text(env.get("bioaccumulation")), 0.5)
+        c = _ENV_WEIGHT.get(_level_from_text(env.get("persistence")), 0.5)
+        per_item.append((a + b + c) / 3.0)
+    avg = sum(per_item) / len(per_item)
+    return int(round(avg * 100))
+
+# -------------------- Main API --------------------
 
 def check_ingredients(payload, threshold=0.86):
     tokens = _tokenize(payload)
@@ -112,15 +154,18 @@ def check_ingredients(payload, threshold=0.86):
                 "source_scientific": item.get("source_scientific", ""),
                 "source_consumer": item.get("source_consumer", ""),
                 "confidence": round(conf, 2),
-                "environmental_impact":env
+                "environmental_impact": env
             })
+
+    # Health summary counts
     health_summary = {
-        "high": sum(1 for r in analysis if r["hazard_level"] == "High"),
-        "medium": sum(1 for r in analysis if r["hazard_level"] == "Medium"),
-        "low": sum(1 for r in analysis if r["hazard_level"] == "Low"),
+        "high": sum(1 for r in analysis if r.get("hazard_level") == "High"),
+        "medium": sum(1 for r in analysis if r.get("hazard_level") == "Medium"),
+        "low": sum(1 for r in analysis if r.get("hazard_level") == "Low"),
         "total": len(analysis),
     }
-    
+
+    # Environment tally
     env_counts = {
         "persistence": {"High": 0, "Moderate": 0, "Low": 0, "Unknown": 0, "Variable": 0},
         "aquatic_toxicity": {"High": 0, "Moderate": 0, "Low": 0, "Unknown": 0, "Variable": 0},
@@ -138,11 +183,22 @@ def check_ingredients(payload, threshold=0.86):
         if "High" in {p, a, b}:
             env_counts["ingredients_with_any_high_env_flag"] += 1
 
+    # Remove 'Unknown' bucket from environment summary (optional)
+    for k in ["persistence", "aquatic_toxicity", "bioaccumulation"]:
+        if "Unknown" in env_counts[k]:
+            del env_counts[k]["Unknown"]
+
+    # ---- NEW: scores added here ----
+    health_score = _compute_health_score(analysis)
+    environment_score = _compute_environment_score(analysis)
+
     return {
         "analysis": analysis,
         "summary": {
             "health": health_summary,
-            "environment": env_counts
+            "environment": env_counts,
+            "health_score": health_score,            # 0–100
+            "environment_score": environment_score,  # 0–100
         }
     }
 
@@ -158,3 +214,4 @@ if __name__ == "__main__":
     results = check_ingredients(ingredients)
     print("Health Summary:", results["summary"]["health"])
     print("Environmental Summary:", results["summary"]["environment"])
+    print("Scores:", {"health": results["summary"]["health_score"], "environment": results["summary"]["environment_score"]})

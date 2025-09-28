@@ -39,6 +39,45 @@ document.addEventListener('DOMContentLoaded', () => {
     return await res.blob();
   }
 
+  function renderScanResults(data) {
+    if (!data || !data.analysis || !Array.isArray(data.analysis)) {
+      resultPre.innerHTML = '<span style="color:red">No results found.</span>';
+      return;
+    }
+    let html = `<div class="scan-results-cards"><h2>Scan Results</h2>`;
+    for (const item of data.analysis) {
+      let hazardIcon = '';
+      switch ((item.hazard_level || '').toLowerCase()) {
+        case 'high': hazardIcon = '⚠️'; break;
+        case 'medium': hazardIcon = '🟠'; break;
+        case 'low': hazardIcon = '🟢'; break;
+        default: hazardIcon = '❔';
+      }
+      html += `<div class="scan-card">
+        <div class="scan-card-header">
+          <span class="scan-card-name">${item.name || item.query || '-'}</span>
+          <span class="scan-card-hazard hazard-${(item.hazard_level || 'unknown').toLowerCase()}">${hazardIcon} ${item.hazard_level || '-'}</span>
+        </div>
+        <div class="scan-card-body">
+          <span class="scan-card-recommend">${item.recommendation || '-'}</span>
+        </div>
+      </div>`;
+    }
+    html += `</div>`;
+    // Optionally show summary
+    if (data.summary && data.summary.health) {
+      html += `<div class="scan-summary">
+        <strong>Summary:</strong><br>
+        <span class="summary-high">⚠️ High: ${data.summary.health.high}</span>, 
+        <span class="summary-medium">🟠 Medium: ${data.summary.health.medium}</span>, 
+        <span class="summary-low">🟢 Low: ${data.summary.health.low}</span>, 
+        <span class="summary-unknown">❔ Unknown: ${data.summary.health.unknown}</span>, 
+        <span class="summary-total">Total: ${data.summary.health.total}</span>
+      </div>`;
+    }
+    resultPre.innerHTML = html;
+  }
+
   async function postSelectedFile() {
     const file = fileInput.files && fileInput.files[0];
     if (!file) {
@@ -57,9 +96,9 @@ document.addEventListener('DOMContentLoaded', () => {
         body: form,
       });
       const data = await res.json();
-      resultPre.textContent = JSON.stringify(data, null, 2);
+      renderScanResults(data);
     } catch (err) {
-      resultPre.textContent = 'Error: ' + err.message;
+      resultPre.innerHTML = `<span style='color:red'>Error: ${err.message}</span>`;
     } finally {
       setUploading(false);
     }
