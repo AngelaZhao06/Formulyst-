@@ -4,6 +4,7 @@ from PIL import Image
 import pytesseract
 
 
+
 def extract_text_from_image(image_path: str) -> str:
     img = Image.open(image_path)
     text = pytesseract.image_to_string(img)
@@ -18,6 +19,7 @@ def parse_ingredients(text: str) -> dict:
 def create_ingredient_dict(image_path: str) -> dict:
     text = extract_text_from_image(image_path)
     return parse_ingredients(text)
+    
 
 
 
@@ -112,35 +114,10 @@ def check_ingredients(payload, threshold=0.86):
                 "confidence": round(conf, 2),
                 "environmental_impact":env
             })
-        else:
-            analysis.append({
-                "query": raw,
-                "matched_alias": None,
-                "id": None,
-                "name": None,
-                "cas": [],
-                "hazard_level": "Unknown",
-                "recommendation": "Suggest avoid",
-                "categories": [],
-                "reasons": [],
-                "regulatory_CA": "",
-                "regulatory_EU": "",
-                "prop65": False,
-                "source_regulatory": "",
-                "source_scientific": "",
-                "source_consumer": "",
-                "confidence": 0.0,
-                "environmental_impact": {
-                    "persistence": "Unknown",
-                    "aquatic_toxicity": "Unknown",
-                    "bioaccumulation": "Unknown",
-                },
-            })
     health_summary = {
         "high": sum(1 for r in analysis if r["hazard_level"] == "High"),
         "medium": sum(1 for r in analysis if r["hazard_level"] == "Medium"),
         "low": sum(1 for r in analysis if r["hazard_level"] == "Low"),
-        "unknown": sum(1 for r in analysis if r["hazard_level"] == "Unknown"),
         "total": len(analysis),
     }
     
