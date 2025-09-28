@@ -1,0 +1,152 @@
+[
+  {
+    "id": "prod_reefcare_spf50_001",
+    "name": "SPF 50 Sunscreen",
+    "company": "ReefCare",
+    "barcode": "9998887776661",
+    "category": "sunscreen",
+    "ingredients": [
+      { "name": "Aqua", "hazard_id": null, "hazard_level": "Unknown" },
+      { "name": "Oxybenzone (Benzophenone-3)", "hazard_id": "ing_oxybenzone_benzophenone_3_6d5f4b41", "hazard_level": "High" },
+      { "name": "Fragrance / Parfum (allergens)", "hazard_id": "ing_fragrance_parfum_allergens_30782c47", "hazard_level": "Medium" }
+    ],
+    "quality_label": "danger",
+    "quality_score": 0,
+    "sustainability_score": 35,
+    "total_score": 14
+  },
+  {
+    "id": "prod_gentleskin_cleanser_002",
+    "name": "Hydrating Gel Cleanser",
+    "company": "GentleSkin",
+    "barcode": "0001112223334",
+    "category": "cleanser",
+    "ingredients": [
+      { "name": "Aqua", "hazard_id": null, "hazard_level": "Unknown" },
+      { "name": "Glycerin", "hazard_id": null, "hazard_level": "Unknown" },
+      { "name": "Sodium Laureth Sulfate (SLES)", "hazard_id": "ing_sodium_laureth_sulfate_sles_e2f219ea", "hazard_level": "Low" }
+    ],
+    "quality_label": "ok",
+    "quality_score": 85,
+    "sustainability_score": 78,
+    "total_score": 82
+  },
+  {
+    "id": "prod_gentleskin_aha10_003",
+    "name": "AHA 10% Exfoliating Serum",
+    "company": "GentleSkin",
+    "barcode": "0001112223335",
+    "category": "serum",
+    "ingredients": [
+      { "name": "Water", "hazard_id": null, "hazard_level": "Unknown" },
+      { "name": "Alpha-Hydroxy Acids (e.g., Glycolic, Lactic)", "hazard_id": "ing_alpha_hydroxy_acids_e_g_glycolic_lactic_c32c6409", "hazard_level": "Medium" }
+    ],
+    "quality_label": "warning",
+    "quality_score": 50,
+    "sustainability_score": 78,
+    "total_score": 61
+  },
+  {
+    "id": "prod_pureleaf_vitc_004",
+    "name": "Pure C Brightening Serum",
+    "company": "PureLeaf Labs",
+    "barcode": "0001112223336",
+    "category": "serum",
+    "ingredients": [
+      { "name": "Ascorbic Acid", "hazard_id": null, "hazard_level": "Unknown" },
+      { "name": "Fragrance / Parfum (allergens)", "hazard_id": "ing_fragrance_parfum_allergens_30782c47", "hazard_level": "Medium" }
+    ],
+    "quality_label": "warning",
+    "quality_score": 50,
+    "sustainability_score": 68,
+    "total_score": 57
+  },
+  {
+    "id": "prod_urbanbeauty_retinol_005",
+    "name": "Retinol Night Cream",
+    "company": "UrbanBeauty",
+    "barcode": "0001112223337",
+    "category": "moisturizer",
+    "ingredients": [
+      { "name": "Retinol and its esters (Vitamin A)", "hazard_id": "ing_retinol_and_its_esters_vitamin_a_d59ce776", "hazard_level": "Medium" },
+      { "name": "Fragrance / Parfum (allergens)", "hazard_id": "ing_fragrance_parfum_allergens_30782c47", "hazard_level": "Medium" }
+    ],
+    "quality_label": "warning",
+    "quality_score": 50,
+    "sustainability_score": 55,
+    "total_score": 52
+  },
+  {
+    "id": "prod_ecoderm_mineralspf_006",
+    "name": "Mineral Sunscreen SPF 50",
+    "company": "EcoDerm",
+    "barcode": "0001112223338",
+    "category": "sunscreen",
+    "ingredients": [
+      { "name": "Zinc Oxide", "hazard_id": null, "hazard_level": "Unknown" },
+      { "name": "Titanium Dioxide (non-nano)", "hazard_id": null, "hazard_level": "Unknown" },
+      { "name": "Caprylic/Capric Triglyceride", "hazard_id": null, "hazard_level": "Unknown" }
+    ],
+    "quality_label": "ok",
+    "quality_score": 75,
+    "sustainability_score": 85,
+    "total_score": 79
+  },
+  {
+    "id": "prod_glamkit_liqlip_007",
+    "name": "Ultra-Matte Liquid Lipstick",
+    "company": "GlamKit",
+    "barcode": "0001112223339",
+    "category": "makeup",
+    "ingredients": [
+      { "name": "Lead and its compounds", "hazard_id": "ing_lead_and_its_compounds_25ee2d81", "hazard_level": "High" }
+    ],
+    "quality_label": "danger",
+    "quality_score": 0,
+    "sustainability_score": 40,
+    "total_score": 16
+  },
+  {
+    "id": "prod_freshfoam_handwash_008",
+    "name": "Antibacterial Hand Wash",
+    "company": "FreshFoam",
+    "barcode": "0001112223340",
+    "category": "cleanser",
+    "ingredients": [
+      { "name": "Triclosan", "hazard_id": "ing_triclosan_c1b7a8fe", "hazard_level": "Medium" }
+    ],
+    "quality_label": "warning",
+    "quality_score": 50,
+    "sustainability_score": 60,
+    "total_score": 54
+  },
+  {
+    "id": "prod_babysoft_talc_009",
+    "name": "BabySoft Talc Powder",
+    "company": "BabySoft",
+    "barcode": "0001112223341",
+    "category": "powder",
+    "ingredients": [
+      { "name": "Talc (loose powders)", "hazard_id": "ing_talc_loose_powders_6c1bbd30", "hazard_level": "Medium" }
+    ],
+    "quality_label": "warning",
+    "quality_score": 50,
+    "sustainability_score": 40,
+    "total_score": 46
+  },
+  {
+    "id": "prod_cleanwave_micellar_010",
+    "name": "Micellar Water",
+    "company": "CleanWave",
+    "barcode": "0001112223342",
+    "category": "cleanser",
+    "ingredients": [
+      { "name": "Aqua", "hazard_id": null, "hazard_level": "Unknown" },
+      { "name": "Phenoxyethanol", "hazard_id": "ing_phenoxyethanol_b5b1eb43", "hazard_level": "Medium" }
+    ],
+    "quality_label": "warning",
+    "quality_score": 50,
+    "sustainability_score": 72,
+    "total_score": 59
+  }
+]
