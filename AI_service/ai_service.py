@@ -1,10 +1,8 @@
-import json, re
+import json, re, os
 from rapidfuzz import fuzz, process
-import os, json
 from PIL import Image
 import pytesseract
 
-pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 
 def extract_text_from_image(image_path: str) -> str:
     img = Image.open(image_path)
@@ -22,12 +20,13 @@ def create_ingredient_dict(image_path: str) -> dict:
     return parse_ingredients(text)
 
 
+
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 with open(os.path.join(BASE_DIR, "alias_index.json"), "r", encoding="utf-8") as f:
     ALIAS_MAP = json.load(f)
 
-with open(os.path.join(BASE_DIR, "hazards.json"), "r", encoding="utf-8") as f:
+with open(os.path.join(BASE_DIR, "hazards_with_environment.json"), "r", encoding="utf-8") as f:
     HAZARDS = json.load(f)
 
 
@@ -59,6 +58,28 @@ def _lookup_fuzzy(token_norm, threshold=0.86):
             id_ = ALIAS_MAP[alias_key]
             return ITEM_BY_ID[id_], score/100.0, alias_key
     return None, 0.0, None
+def _level_from_text(value: str) -> str:
+    if not value:
+        return "Unknown"
+    v = value.lower()
+    if "high" in v: 
+        return "High"
+    if "moderate" in v or "medium" in v: 
+        return "Moderate"
+    if "low" in v: 
+        return "Low"
+    if "variable" in v: 
+        return "Variable"
+    if "unknown" in v: 
+        return "Unknown"
+    return "Unknown"
+def _env_block(item: dict) -> dict:
+    env = (item.get("environmental_impact") or {})
+    return {
+        "persistence": env.get("persistence", "Unknown"),
+        "aquatic_toxicity": env.get("aquatic_toxicity", "Unknown"),
+        "bioaccumulation": env.get("bioaccumulation", "Unknown"),
+    }
 
 def check_ingredients(payload, threshold=0.86):
     tokens = _tokenize(payload)
@@ -71,6 +92,7 @@ def check_ingredients(payload, threshold=0.86):
             item, conf, matched_alias = _lookup_fuzzy(raw, threshold=threshold)
         if item and item["id"] not in seen_ids:
             seen_ids.add(item["id"])
+            env = _env_block(item)
             analysis.append({
                 "query": raw,
                 "matched_alias": matched_alias,
@@ -88,6 +110,7 @@ def check_ingredients(payload, threshold=0.86):
                 "source_scientific": item.get("source_scientific", ""),
                 "source_consumer": item.get("source_consumer", ""),
                 "confidence": round(conf, 2),
+                "environmental_impact":env
             })
         else:
             analysis.append({
@@ -107,23 +130,54 @@ def check_ingredients(payload, threshold=0.86):
                 "source_scientific": "",
                 "source_consumer": "",
                 "confidence": 0.0,
+                "environmental_impact": {
+                    "persistence": "Unknown",
+                    "aquatic_toxicity": "Unknown",
+                    "bioaccumulation": "Unknown",
+                },
             })
-    summary = {
+    health_summary = {
         "high": sum(1 for r in analysis if r["hazard_level"] == "High"),
         "medium": sum(1 for r in analysis if r["hazard_level"] == "Medium"),
         "low": sum(1 for r in analysis if r["hazard_level"] == "Low"),
         "unknown": sum(1 for r in analysis if r["hazard_level"] == "Unknown"),
         "total": len(analysis),
     }
-    return {"analysis": analysis, "summary": summary}
+    
+    env_counts = {
+        "persistence": {"High": 0, "Moderate": 0, "Low": 0, "Unknown": 0, "Variable": 0},
+        "aquatic_toxicity": {"High": 0, "Moderate": 0, "Low": 0, "Unknown": 0, "Variable": 0},
+        "bioaccumulation": {"High": 0, "Moderate": 0, "Low": 0, "Unknown": 0, "Variable": 0},
+        "ingredients_with_any_high_env_flag": 0,
+    }
+    for r in analysis:
+        env = r["environmental_impact"]
+        p = _level_from_text(env.get("persistence"))
+        a = _level_from_text(env.get("aquatic_toxicity"))
+        b = _level_from_text(env.get("bioaccumulation"))
+        env_counts["persistence"][p] += 1
+        env_counts["aquatic_toxicity"][a] += 1
+        env_counts["bioaccumulation"][b] += 1
+        if "High" in {p, a, b}:
+            env_counts["ingredients_with_any_high_env_flag"] += 1
 
-file_path = "/Users/nikag/ICS/Hackathon/Formulyst-/AI_service/Screenshot.png"
+    return {
+        "analysis": analysis,
+        "summary": {
+            "health": health_summary,
+            "environment": env_counts
+        }
+    }
 
-# Step 1: OCR
-ingredients = create_ingredient_dict(file_path)
-print("OCR Ingredients:", ingredients)
+# ---------- Example run ----------
+if __name__ == "__main__":
+    file_path = "/Users/yasemannikoo/projects/Formulyst-/AI_service/Screenshot.png"
 
-# Step 2: Hazard check
-hazard_results = check_ingredients(ingredients)["summary"]
-print("Hazard Results:", hazard_results)
+    # Step 1: OCR
+    ingredients = create_ingredient_dict(file_path)
+    print("OCR Ingredients:", ingredients)
 
+    # Step 2: Hazard + Environmental check
+    results = check_ingredients(ingredients)
+    print("Health Summary:", results["summary"]["health"])
+    print("Environmental Summary:", results["summary"]["environment"])

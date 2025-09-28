@@ -26,7 +26,12 @@
     "source_regulatory": "Health Canada Hotlist; EU Cosmetics Regulation",
     "source_scientific": "IARC Monograph; SCCS Opinion on formaldehyde and MG",
     "source_consumer": "EWG Skin Deep",
-    "id": "ing_formaldehyde_5cfa1358"
+    "id": "ing_formaldehyde_5cfa1358",
+    "environmental_impact": {
+      "persistence": "Low (readily biodegradable)",
+      "aquatic_toxicity": "Moderate (toxic to fish at higher concentrations)",
+      "bioaccumulation": "Low"
+    }
   },
   {
     "name": "Benzene",
@@ -49,7 +54,12 @@
     "source_regulatory": "Health Canada Hotlist (prohibited)",
     "source_scientific": "IARC Monograph on Benzene",
     "source_consumer": "EWG Skin Deep",
-    "id": "ing_benzene_88c2e133"
+    "id": "ing_benzene_88c2e133",
+    "environmental_impact": {
+      "persistence": "Moderate (can persist in groundwater)",
+      "aquatic_toxicity": "High (toxic to aquatic life)",
+      "bioaccumulation": "Low"
+    }
   },
   {
     "name": "Lead and its compounds",
@@ -76,7 +86,12 @@
     "source_regulatory": "Health Canada Hotlist (prohibited)",
     "source_scientific": "ATSDR Toxicological Profile for Lead",
     "source_consumer": "EWG Skin Deep",
-    "id": "ing_lead_and_its_compounds_25ee2d81"
+    "id": "ing_lead_and_its_compounds_25ee2d81",
+    "environmental_impact": {
+      "persistence": "High (non-degradable heavy metal)",
+      "aquatic_toxicity": "High (toxic to aquatic organisms)",
+      "bioaccumulation": "High (bioaccumulates in food chain)"
+    }
   },
   {
     "name": "Mercury compounds (incl. Thimerosal)",
@@ -112,7 +127,12 @@
     "source_regulatory": "Health Canada Hotlist; EU Annex II",
     "source_scientific": "WHO/IPCS Mercury assessment",
     "source_consumer": "EWG Skin Deep",
-    "id": "ing_mercury_compounds_incl_thimerosal_11090890"
+    "id": "ing_mercury_compounds_incl_thimerosal_11090890",
+    "environmental_impact": {
+      "persistence": "High (persistent in environment)",
+      "aquatic_toxicity": "High (very toxic to aquatic life)",
+      "bioaccumulation": "High (strong bioaccumulation in fish and mammals)"
+    }
   },
   {
     "name": "Cadmium and its compounds",
@@ -135,7 +155,12 @@
     "source_regulatory": "Health Canada Hotlist (prohibited); EU Annex II",
     "source_scientific": "IARC Monograph on Cadmium",
     "source_consumer": "EWG Skin Deep",
-    "id": "ing_cadmium_and_its_compounds_6efd5793"
+    "id": "ing_cadmium_and_its_compounds_6efd5793",
+    "environmental_impact": {
+      "persistence": "High (persistent heavy metal)",
+      "aquatic_toxicity": "High (toxic to aquatic life)",
+      "bioaccumulation": "High (bioaccumulates in organisms)"
+    }
   },
   {
     "name": "Arsenic and its compounds",
@@ -158,7 +183,12 @@
     "source_regulatory": "Health Canada Hotlist; EU Annex II",
     "source_scientific": "IARC Monograph on Arsenic",
     "source_consumer": "EWG Skin Deep",
-    "id": "ing_arsenic_and_its_compounds_1be602ed"
+    "id": "ing_arsenic_and_its_compounds_1be602ed",
+    "environmental_impact": {
+      "persistence": "High (does not degrade)",
+      "aquatic_toxicity": "High (toxic to aquatic life)",
+      "bioaccumulation": "Moderate (bioaccumulates to some extent)"
+    }
   },
   {
     "name": "Chromium VI compounds (as Cr VI)",
@@ -184,7 +214,12 @@
     "source_regulatory": "Health Canada Hotlist; EU Annex II",
     "source_scientific": "IARC Monograph on Chromium(VI)",
     "source_consumer": "EWG Skin Deep",
-    "id": "ing_chromium_vi_compounds_as_cr_vi_0a04432a"
+    "id": "ing_chromium_vi_compounds_as_cr_vi_0a04432a",
+    "environmental_impact": {
+      "persistence": "High (persistent in soils/water)",
+      "aquatic_toxicity": "High (very toxic to aquatic life)",
+      "bioaccumulation": "Low"
+    }
   },
   {
     "name": "Coal tars (crude and refined)",
@@ -209,7 +244,12 @@
     "source_regulatory": "Health Canada Hotlist (prohibited)",
     "source_scientific": "IARC evaluations of coal tars/PAHs",
     "source_consumer": "EWG Skin Deep",
-    "id": "ing_coal_tars_crude_and_refined_4fdfb979"
+    "id": "ing_coal_tars_crude_and_refined_4fdfb979",
+    "environmental_impact": {
+      "persistence": "High (contains persistent PAHs)",
+      "aquatic_toxicity": "High (toxic to fish and benthic organisms)",
+      "bioaccumulation": "High (PAHs bioaccumulate)"
+    }
   },
   {
     "name": "1,4-Dioxane (as contaminant)",
@@ -234,7 +274,12 @@
     "source_regulatory": "Health Canada Hotlist; EU Annex II",
     "source_scientific": "EPA IRIS on 1,4-Dioxane",
     "source_consumer": "EWG Skin Deep",
-    "id": "ing_1_4_dioxane_as_contaminant_f15bc3b3"
+    "id": "ing_1_4_dioxane_as_contaminant_f15bc3b3",
+    "environmental_impact": {
+      "persistence": "Unknown",
+      "aquatic_toxicity": "Unknown",
+      "bioaccumulation": "Unknown"
+    }
   },
   {
     "name": "Benzidine and its salts",
@@ -256,7 +301,12 @@
     "source_regulatory": "Health Canada Hotlist; EU Annex II",
     "source_scientific": "IARC Monograph on Benzidine",
     "source_consumer": "EWG Skin Deep",
-    "id": "ing_benzidine_and_its_salts_9bc62362"
+    "id": "ing_benzidine_and_its_salts_9bc62362",
+    "environmental_impact": {
+      "persistence": "Unknown",
+      "aquatic_toxicity": "Unknown",
+      "bioaccumulation": "Unknown"
+    }
   },
   {
     "name": "Nitrosamines (N-nitrosodiethanolamine etc.)",
@@ -287,7 +337,12 @@
     "source_regulatory": "Health Canada Hotlist; EU Annex II",
     "source_scientific": "IARC Monographs on nitrosamines",
     "source_consumer": "EWG Skin Deep",
-    "id": "ing_nitrosamines_n_nitrosodiethanolamine_etc_a2b11f71"
+    "id": "ing_nitrosamines_n_nitrosodiethanolamine_etc_a2b11f71",
+    "environmental_impact": {
+      "persistence": "Unknown",
+      "aquatic_toxicity": "Unknown",
+      "bioaccumulation": "Unknown"
+    }
   },
   {
     "name": "Parabens (Methyl-, Ethyl-, Propyl-, Butyl-)",
@@ -319,7 +374,12 @@
     "source_regulatory": "Health Canada Hotlist (restrictions); EU SCCS opinions",
     "source_scientific": "SCCS opinions on parabens",
     "source_consumer": "EWG Skin Deep",
-    "id": "ing_parabens_methyl_ethyl_propyl_butyl_29bf0ed0"
+    "id": "ing_parabens_methyl_ethyl_propyl_butyl_29bf0ed0",
+    "environmental_impact": {
+      "persistence": "Moderate (partially biodegradable)",
+      "aquatic_toxicity": "Moderate (toxic to algae/fish at higher concentrations)",
+      "bioaccumulation": "Low"
+    }
   },
   {
     "name": "Phthalates (e.g., DEHP, DBP)",
@@ -349,7 +409,12 @@
     "source_regulatory": "Health Canada Hotlist; EU Annex II",
     "source_scientific": "SCCP/SCCS opinions; NTP CERHR",
     "source_consumer": "EWG Skin Deep",
-    "id": "ing_phthalates_e_g_dehp_dbp_ba56d895"
+    "id": "ing_phthalates_e_g_dehp_dbp_ba56d895",
+    "environmental_impact": {
+      "persistence": "High (environmentally persistent)",
+      "aquatic_toxicity": "High (toxic to aquatic life)",
+      "bioaccumulation": "High (notably DEHP bioaccumulates)"
+    }
   },
   {
     "name": "Oxybenzone (Benzophenone-3)",
@@ -376,7 +441,12 @@
     "source_regulatory": "Health Canada Hotlist (restrictions); EU SCCS 2021 opinion",
     "source_scientific": "SCCS Opinion 2021",
     "source_consumer": "EWG Skin Deep",
-    "id": "ing_oxybenzone_benzophenone_3_6d5f4b41"
+    "id": "ing_oxybenzone_benzophenone_3_6d5f4b41",
+    "environmental_impact": {
+      "persistence": "Moderate (degrades slowly in seawater)",
+      "aquatic_toxicity": "High (coral reef toxicity)",
+      "bioaccumulation": "Moderate"
+    }
   },
   {
     "name": "Hydroquinone",
@@ -401,7 +471,12 @@
     "source_regulatory": "Health Canada Hotlist (restrictions); EU Annex III",
     "source_scientific": "CIR Review; SCCS opinions",
     "source_consumer": "EWG Skin Deep",
-    "id": "ing_hydroquinone_16f31420"
+    "id": "ing_hydroquinone_16f31420",
+    "environmental_impact": {
+      "persistence": "Unknown",
+      "aquatic_toxicity": "Unknown",
+      "bioaccumulation": "Unknown"
+    }
   },
   {
     "name": "p-Phenylenediamine (PPD)",
@@ -429,7 +504,12 @@
     "source_regulatory": "Health Canada Hotlist; EU Annex III",
     "source_scientific": "SCCS opinions on PPD",
     "source_consumer": "EWG Skin Deep",
-    "id": "ing_p_phenylenediamine_ppd_26df4c53"
+    "id": "ing_p_phenylenediamine_ppd_26df4c53",
+    "environmental_impact": {
+      "persistence": "Unknown",
+      "aquatic_toxicity": "Unknown",
+      "bioaccumulation": "Unknown"
+    }
   },
   {
     "name": "Resorcinol",
@@ -454,7 +534,12 @@
     "source_regulatory": "Health Canada Hotlist; EU Annex III",
     "source_scientific": "CIR Review",
     "source_consumer": "EWG Skin Deep",
-    "id": "ing_resorcinol_63c98cc0"
+    "id": "ing_resorcinol_63c98cc0",
+    "environmental_impact": {
+      "persistence": "Unknown",
+      "aquatic_toxicity": "Unknown",
+      "bioaccumulation": "Unknown"
+    }
   },
   {
     "name": "Triclosan",
@@ -478,7 +563,12 @@
     "source_regulatory": "Health Canada Hotlist; EU opinions",
     "source_scientific": "CIR Review; EPA assessments",
     "source_consumer": "EWG Skin Deep",
-    "id": "ing_triclosan_c1b7a8fe"
+    "id": "ing_triclosan_c1b7a8fe",
+    "environmental_impact": {
+      "persistence": "High (persistent in sediments and water)",
+      "aquatic_toxicity": "High (very toxic to algae and invertebrates)",
+      "bioaccumulation": "Moderate"
+    }
   },
   {
     "name": "Methylisothiazolinone (MI)",
@@ -503,7 +593,12 @@
     "source_regulatory": "Health Canada Hotlist; EU Annex V/III decisions",
     "source_scientific": "SCCS Opinions on MI",
     "source_consumer": "EWG Skin Deep",
-    "id": "ing_methylisothiazolinone_mi_877a25ef"
+    "id": "ing_methylisothiazolinone_mi_877a25ef",
+    "environmental_impact": {
+      "persistence": "Unknown",
+      "aquatic_toxicity": "Unknown",
+      "bioaccumulation": "Unknown"
+    }
   },
   {
     "name": "Methylchloroisothiazolinone/Methylisothiazolinone (MCI/MI)",
@@ -530,7 +625,12 @@
     "source_regulatory": "Health Canada Hotlist; EU Annex V/III",
     "source_scientific": "SCCS Opinions",
     "source_consumer": "EWG Skin Deep",
-    "id": "ing_methylchloroisothiazolinone_methylisothiazolinone_mci_mi_fc11c20d"
+    "id": "ing_methylchloroisothiazolinone_methylisothiazolinone_mci_mi_fc11c20d",
+    "environmental_impact": {
+      "persistence": "Unknown",
+      "aquatic_toxicity": "Unknown",
+      "bioaccumulation": "Unknown"
+    }
   },
   {
     "name": "Alpha-Hydroxy Acids (e.g., Glycolic, Lactic)",
@@ -560,7 +660,12 @@
     "source_regulatory": "Health Canada Hotlist; EU Annex III (various)",
     "source_scientific": "CIR AHA report",
     "source_consumer": "EWG Skin Deep",
-    "id": "ing_alpha_hydroxy_acids_e_g_glycolic_lactic_c32c6409"
+    "id": "ing_alpha_hydroxy_acids_e_g_glycolic_lactic_c32c6409",
+    "environmental_impact": {
+      "persistence": "Unknown",
+      "aquatic_toxicity": "Unknown",
+      "bioaccumulation": "Unknown"
+    }
   },
   {
     "name": "Salicylic Acid",
@@ -586,7 +691,12 @@
     "source_regulatory": "Health Canada Hotlist; EU Annex III",
     "source_scientific": "CIR Review of Salicylic acid",
     "source_consumer": "EWG Skin Deep",
-    "id": "ing_salicylic_acid_67af5618"
+    "id": "ing_salicylic_acid_67af5618",
+    "environmental_impact": {
+      "persistence": "Unknown",
+      "aquatic_toxicity": "Unknown",
+      "bioaccumulation": "Unknown"
+    }
   },
   {
     "name": "Retinol and its esters (Vitamin A)",
@@ -618,7 +728,12 @@
     "source_regulatory": "Health Canada Hotlist (limits)",
     "source_scientific": "SCCS/Scientific opinions",
     "source_consumer": "EWG Skin Deep",
-    "id": "ing_retinol_and_its_esters_vitamin_a_d59ce776"
+    "id": "ing_retinol_and_its_esters_vitamin_a_d59ce776",
+    "environmental_impact": {
+      "persistence": "Unknown",
+      "aquatic_toxicity": "Unknown",
+      "bioaccumulation": "Unknown"
+    }
   },
   {
     "name": "Retinal (Retinaldehyde)",
@@ -642,7 +757,12 @@
     "source_regulatory": "Health Canada Hotlist",
     "source_scientific": "SCCS opinions",
     "source_consumer": "EWG Skin Deep",
-    "id": "ing_retinal_retinaldehyde_eb147cf0"
+    "id": "ing_retinal_retinaldehyde_eb147cf0",
+    "environmental_impact": {
+      "persistence": "Unknown",
+      "aquatic_toxicity": "Unknown",
+      "bioaccumulation": "Unknown"
+    }
   },
   {
     "name": "Benzophenone",
@@ -665,7 +785,12 @@
     "source_regulatory": "Health Canada Hotlist; EU Annex III",
     "source_scientific": "SCCS opinions",
     "source_consumer": "EWG Skin Deep",
-    "id": "ing_benzophenone_3e46dfd8"
+    "id": "ing_benzophenone_3e46dfd8",
+    "environmental_impact": {
+      "persistence": "Unknown",
+      "aquatic_toxicity": "Unknown",
+      "bioaccumulation": "Unknown"
+    }
   },
   {
     "name": "Benzoyl Peroxide (nails)",
@@ -688,7 +813,12 @@
     "source_regulatory": "Health Canada Hotlist",
     "source_scientific": "CIR Review",
     "source_consumer": "EWG Skin Deep",
-    "id": "ing_benzoyl_peroxide_nails_fa5287f0"
+    "id": "ing_benzoyl_peroxide_nails_fa5287f0",
+    "environmental_impact": {
+      "persistence": "Unknown",
+      "aquatic_toxicity": "Unknown",
+      "bioaccumulation": "Unknown"
+    }
   },
   {
     "name": "Aluminum Chloride (Antiperspirant)",
@@ -714,7 +844,12 @@
     "source_regulatory": "Health Canada Hotlist (conditions)",
     "source_scientific": "CIR safety assessments",
     "source_consumer": "EWG Skin Deep",
-    "id": "ing_aluminum_chloride_antiperspirant_e9cd9e3c"
+    "id": "ing_aluminum_chloride_antiperspirant_e9cd9e3c",
+    "environmental_impact": {
+      "persistence": "Unknown",
+      "aquatic_toxicity": "Unknown",
+      "bioaccumulation": "Unknown"
+    }
   },
   {
     "name": "Aluminum Chlorohydrate & complexes",
@@ -740,7 +875,12 @@
     "source_regulatory": "Health Canada Hotlist (conditions)",
     "source_scientific": "CIR assessments",
     "source_consumer": "EWG Skin Deep",
-    "id": "ing_aluminum_chlorohydrate_complexes_f88cf3be"
+    "id": "ing_aluminum_chlorohydrate_complexes_f88cf3be",
+    "environmental_impact": {
+      "persistence": "Unknown",
+      "aquatic_toxicity": "Unknown",
+      "bioaccumulation": "Unknown"
+    }
   },
   {
     "name": "Aluminum Zirconium complexes",
@@ -765,7 +905,12 @@
     "source_regulatory": "Health Canada Hotlist (conditions)",
     "source_scientific": "CIR assessments",
     "source_consumer": "EWG Skin Deep",
-    "id": "ing_aluminum_zirconium_complexes_4b03ffa0"
+    "id": "ing_aluminum_zirconium_complexes_4b03ffa0",
+    "environmental_impact": {
+      "persistence": "Unknown",
+      "aquatic_toxicity": "Unknown",
+      "bioaccumulation": "Unknown"
+    }
   },
   {
     "name": "Boric acid and borates",
@@ -794,7 +939,12 @@
     "source_regulatory": "Health Canada Hotlist",
     "source_scientific": "ECHA dossiers; CICAD",
     "source_consumer": "EWG Skin Deep",
-    "id": "ing_boric_acid_and_borates_dc8b4ec4"
+    "id": "ing_boric_acid_and_borates_dc8b4ec4",
+    "environmental_impact": {
+      "persistence": "Unknown",
+      "aquatic_toxicity": "Unknown",
+      "bioaccumulation": "Unknown"
+    }
   },
   {
     "name": "Methanol (Methyl alcohol)",
@@ -819,7 +969,12 @@
     "source_regulatory": "Health Canada Hotlist (conditions)",
     "source_scientific": "ATSDR Toxicological profile",
     "source_consumer": "EWG Skin Deep",
-    "id": "ing_methanol_methyl_alcohol_d6895bd8"
+    "id": "ing_methanol_methyl_alcohol_d6895bd8",
+    "environmental_impact": {
+      "persistence": "Unknown",
+      "aquatic_toxicity": "Unknown",
+      "bioaccumulation": "Unknown"
+    }
   },
   {
     "name": "Methylene Chloride (Dichloromethane)",
@@ -844,7 +999,12 @@
     "source_regulatory": "Health Canada Hotlist",
     "source_scientific": "IARC Monograph on DCM",
     "source_consumer": "EWG Skin Deep",
-    "id": "ing_methylene_chloride_dichloromethane_e29d54f7"
+    "id": "ing_methylene_chloride_dichloromethane_e29d54f7",
+    "environmental_impact": {
+      "persistence": "Unknown",
+      "aquatic_toxicity": "Unknown",
+      "bioaccumulation": "Unknown"
+    }
   },
   {
     "name": "1,3-Butadiene (as impurity in propellants)",
@@ -867,7 +1027,12 @@
     "source_regulatory": "Health Canada Hotlist (limit)",
     "source_scientific": "IARC Monograph on 1,3-Butadiene",
     "source_consumer": "EWG Skin Deep",
-    "id": "ing_1_3_butadiene_as_impurity_in_propellants_36668d3e"
+    "id": "ing_1_3_butadiene_as_impurity_in_propellants_36668d3e",
+    "environmental_impact": {
+      "persistence": "Unknown",
+      "aquatic_toxicity": "Unknown",
+      "bioaccumulation": "Unknown"
+    }
   },
   {
     "name": "Talc (loose powders)",
@@ -889,7 +1054,12 @@
     "source_regulatory": "Health Canada Hotlist (conditions)",
     "source_scientific": "CIR Safety assessment of Talc",
     "source_consumer": "EWG Skin Deep",
-    "id": "ing_talc_loose_powders_6c1bbd30"
+    "id": "ing_talc_loose_powders_6c1bbd30",
+    "environmental_impact": {
+      "persistence": "Unknown",
+      "aquatic_toxicity": "Unknown",
+      "bioaccumulation": "Unknown"
+    }
   },
   {
     "name": "Fragrance / Parfum (allergens)",
@@ -914,7 +1084,12 @@
     "source_regulatory": "EU Annex III Fragrance allergens; IFRA",
     "source_scientific": "SCCS fragrance allergen opinions",
     "source_consumer": "EWG Skin Deep",
-    "id": "ing_fragrance_parfum_allergens_30782c47"
+    "id": "ing_fragrance_parfum_allergens_30782c47",
+    "environmental_impact": {
+      "persistence": "Variable (depends on components)",
+      "aquatic_toxicity": "High (many fragrance compounds toxic to aquatic life)",
+      "bioaccumulation": "Moderate"
+    }
   },
   {
     "name": "Sodium Lauryl Sulfate (SLS)",
@@ -941,7 +1116,12 @@
     "source_regulatory": "General cosmetic permissions",
     "source_scientific": "CIR Safety assessment of SLS",
     "source_consumer": "EWG Skin Deep",
-    "id": "ing_sodium_lauryl_sulfate_sls_b7ab16a1"
+    "id": "ing_sodium_lauryl_sulfate_sls_b7ab16a1",
+    "environmental_impact": {
+      "persistence": "Low (biodegradable in wastewater)",
+      "aquatic_toxicity": "High (toxic to fish/invertebrates at low levels)",
+      "bioaccumulation": "Low"
+    }
   },
   {
     "name": "Sodium Laureth Sulfate (SLES)",
@@ -968,7 +1148,12 @@
     "source_regulatory": "General cosmetic permissions",
     "source_scientific": "CIR assessments",
     "source_consumer": "EWG Skin Deep",
-    "id": "ing_sodium_laureth_sulfate_sles_e2f219ea"
+    "id": "ing_sodium_laureth_sulfate_sles_e2f219ea",
+    "environmental_impact": {
+      "persistence": "Low (biodegradable under aerobic conditions)",
+      "aquatic_toxicity": "Moderate (toxic to aquatic life)",
+      "bioaccumulation": "Low"
+    }
   },
   {
     "name": "Phenoxyethanol",
@@ -991,7 +1176,12 @@
     "source_regulatory": "EU Annex V; Health Canada positions",
     "source_scientific": "SCCS Opinion 2016",
     "source_consumer": "EWG Skin Deep",
-    "id": "ing_phenoxyethanol_b5b1eb43"
+    "id": "ing_phenoxyethanol_b5b1eb43",
+    "environmental_impact": {
+      "persistence": "Moderate (partially biodegradable)",
+      "aquatic_toxicity": "Moderate (toxic to fish/invertebrates)",
+      "bioaccumulation": "Low"
+    }
   },
   {
     "name": "BHA (Butylated Hydroxyanisole)",
@@ -1016,7 +1206,12 @@
     "source_regulatory": "Prop 65; EU opinions",
     "source_scientific": "CIR Review; NTP",
     "source_consumer": "EWG Skin Deep",
-    "id": "ing_bha_butylated_hydroxyanisole_5eb1b5f3"
+    "id": "ing_bha_butylated_hydroxyanisole_5eb1b5f3",
+    "environmental_impact": {
+      "persistence": "Unknown",
+      "aquatic_toxicity": "Unknown",
+      "bioaccumulation": "Unknown"
+    }
   },
   {
     "name": "BHT (Butylated Hydroxytoluene)",
@@ -1041,7 +1236,12 @@
     "source_regulatory": "EU opinions; general allowances",
     "source_scientific": "CIR Review",
     "source_consumer": "EWG Skin Deep",
-    "id": "ing_bht_butylated_hydroxytoluene_75a560e1"
+    "id": "ing_bht_butylated_hydroxytoluene_75a560e1",
+    "environmental_impact": {
+      "persistence": "Unknown",
+      "aquatic_toxicity": "Unknown",
+      "bioaccumulation": "Unknown"
+    }
   },
   {
     "name": "Toluene-2,5-diamine (and sulfate)",
@@ -1068,7 +1268,12 @@
     "source_regulatory": "Health Canada Hotlist; EU Annex III",
     "source_scientific": "SCCS opinions",
     "source_consumer": "EWG Skin Deep",
-    "id": "ing_toluene_2_5_diamine_and_sulfate_b7287b76"
+    "id": "ing_toluene_2_5_diamine_and_sulfate_b7287b76",
+    "environmental_impact": {
+      "persistence": "Unknown",
+      "aquatic_toxicity": "Unknown",
+      "bioaccumulation": "Unknown"
+    }
   },
   {
     "name": "Tricresyl phosphate",
@@ -1094,7 +1299,12 @@
     "source_regulatory": "Health Canada Hotlist; EU Annex II",
     "source_scientific": "Toxicology literature",
     "source_consumer": "EWG Skin Deep",
-    "id": "ing_tricresyl_phosphate_860bb3ec"
+    "id": "ing_tricresyl_phosphate_860bb3ec",
+    "environmental_impact": {
+      "persistence": "Unknown",
+      "aquatic_toxicity": "Unknown",
+      "bioaccumulation": "Unknown"
+    }
   },
   {
     "name": "Talc (with asbestos-free specification)",
@@ -1118,7 +1328,12 @@
     "source_regulatory": "Health Canada Hotlist",
     "source_scientific": "CIR Talc updates",
     "source_consumer": "EWG Skin Deep",
-    "id": "ing_talc_with_asbestos_free_specification_26ef68e9"
+    "id": "ing_talc_with_asbestos_free_specification_26ef68e9",
+    "environmental_impact": {
+      "persistence": "Unknown",
+      "aquatic_toxicity": "Unknown",
+      "bioaccumulation": "Unknown"
+    }
   },
   {
     "name": "Benzalkonium chloride",
@@ -1147,7 +1362,12 @@
     "source_regulatory": "Health Canada Hotlist",
     "source_scientific": "CIR review",
     "source_consumer": "EWG Skin Deep",
-    "id": "ing_benzalkonium_chloride_46f7fe00"
+    "id": "ing_benzalkonium_chloride_46f7fe00",
+    "environmental_impact": {
+      "persistence": "Unknown",
+      "aquatic_toxicity": "Unknown",
+      "bioaccumulation": "Unknown"
+    }
   },
   {
     "name": "Benzethonium chloride",
@@ -1170,7 +1390,12 @@
     "source_regulatory": "Health Canada Hotlist",
     "source_scientific": "CIR review",
     "source_consumer": "EWG Skin Deep",
-    "id": "ing_benzethonium_chloride_5c64f97b"
+    "id": "ing_benzethonium_chloride_5c64f97b",
+    "environmental_impact": {
+      "persistence": "Unknown",
+      "aquatic_toxicity": "Unknown",
+      "bioaccumulation": "Unknown"
+    }
   },
   {
     "name": "Sodium perborate / Peroxides",
@@ -1202,7 +1427,12 @@
     "source_regulatory": "Health Canada Hotlist (Peroxide section)",
     "source_scientific": "CIR / safety dossiers",
     "source_consumer": "EWG Skin Deep",
-    "id": "ing_sodium_perborate_peroxides_69a9c0bc"
+    "id": "ing_sodium_perborate_peroxides_69a9c0bc",
+    "environmental_impact": {
+      "persistence": "Unknown",
+      "aquatic_toxicity": "Unknown",
+      "bioaccumulation": "Unknown"
+    }
   },
   {
     "name": "Eucalyptus oil (certain chemotypes)",
@@ -1231,7 +1461,12 @@
     "source_regulatory": "Health Canada Hotlist",
     "source_scientific": "IFRA Standards context",
     "source_consumer": "EWG Skin Deep",
-    "id": "ing_eucalyptus_oil_certain_chemotypes_215ab0f2"
+    "id": "ing_eucalyptus_oil_certain_chemotypes_215ab0f2",
+    "environmental_impact": {
+      "persistence": "Unknown",
+      "aquatic_toxicity": "Unknown",
+      "bioaccumulation": "Unknown"
+    }
   },
   {
     "name": "Methyl eugenol (as fragrance component)",
@@ -1254,7 +1489,12 @@
     "source_regulatory": "Health Canada Hotlist; EU Annex III",
     "source_scientific": "JECFA/SCCS opinions",
     "source_consumer": "EWG Skin Deep",
-    "id": "ing_methyl_eugenol_as_fragrance_component_1dbe0273"
+    "id": "ing_methyl_eugenol_as_fragrance_component_1dbe0273",
+    "environmental_impact": {
+      "persistence": "Unknown",
+      "aquatic_toxicity": "Unknown",
+      "bioaccumulation": "Unknown"
+    }
   },
   {
     "name": "Triclocarban",
@@ -1279,7 +1519,12 @@
     "source_regulatory": "Regulatory communications (various)",
     "source_scientific": "CIR Review",
     "source_consumer": "EWG Skin Deep",
-    "id": "ing_triclocarban_cbcd0975"
+    "id": "ing_triclocarban_cbcd0975",
+    "environmental_impact": {
+      "persistence": "Unknown",
+      "aquatic_toxicity": "Unknown",
+      "bioaccumulation": "Unknown"
+    }
   },
   {
     "name": "Bisphenol A (BPA)",
@@ -1304,6 +1549,11 @@
     "source_regulatory": "Health Canada Hotlist (prohibited entry for BPA); EU measures",
     "source_scientific": "EFSA/SCCS opinions",
     "source_consumer": "EWG Skin Deep",
-    "id": "ing_bisphenol_a_bpa_61b0730c"
+    "id": "ing_bisphenol_a_bpa_61b0730c",
+    "environmental_impact": {
+      "persistence": "Unknown",
+      "aquatic_toxicity": "Unknown",
+      "bioaccumulation": "Unknown"
+    }
   }
 ]
