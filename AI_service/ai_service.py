@@ -4,7 +4,7 @@ import os, json
 from PIL import Image
 import pytesseract
 
-
+pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 
 def extract_text_from_image(image_path: str) -> str:
     img = Image.open(image_path)
@@ -117,7 +117,7 @@ def check_ingredients(payload, threshold=0.86):
     }
     return {"analysis": analysis, "summary": summary}
 
-file_path = "/Users/yasemannikoo/projects/Formulyst-/AI_service/Screenshot2.png"
+file_path = "/Users/nikag/ICS/Hackathon/Formulyst-/AI_service/Screenshot.png"
 
 # Step 1: OCR
 ingredients = create_ingredient_dict(file_path)
