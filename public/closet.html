@@ -7,6 +7,26 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
     <style>
+      .autocomplete-list {
+        position: absolute;
+        background: #fff;
+        border: 1px solid #F4ACB7;
+        border-radius: 0 0 12px 12px;
+        box-shadow: 0 4px 16px rgba(157,129,137,0.12);
+        width: 100%;
+        max-height: 180px;
+        overflow-y: auto;
+        z-index: 10;
+      }
+      .autocomplete-item {
+        padding: 10px 16px;
+        cursor: pointer;
+        color: #9D8189;
+      }
+      .autocomplete-item:hover {
+        background: #FFE5D9;
+        color: #D72660;
+      }
       body {
         background: linear-gradient(135deg, #D8E2DC 0%, #FFE5D9 25%, #FFCAD4 50%, #F4ACB7 75%, #9D8189 100%);
         min-height: 100vh;
@@ -20,23 +40,105 @@
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="#D72660" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
         </svg>
-  Back
+        Back
       </a>
-      <!-- Removed Log In and Sign Up buttons from closet page header -->
     </header>
     <main class="flex flex-col items-center w-full max-w-2xl mt-8">
       <h1 class="text-5xl font-bold mb-6 text-[#9D8189]">My Beauty Closet</h1>
       <form id="addProductForm" class="flex w-full mb-8">
-        <input type="text" id="productInput" class="flex-1 px-4 py-2 rounded-l-lg border border-[#F4ACB7] focus:outline-none" placeholder="Add a product..." required />
+        <div style="position:relative;width:100%;">
+          <input type="text" id="productInput" class="flex-1 px-4 py-2 rounded-l-lg border border-[#F4ACB7] focus:outline-none w-full" placeholder="Add a product..." autocomplete="off" required />
+          <div id="autocompleteList" class="autocomplete-list" style="display:none;"></div>
+        </div>
         <button type="submit" class="bg-[#F4ACB7] text-black px-6 py-2 rounded-r-lg font-semibold hover:bg-[#FFCAD4] transition">Add</button>
       </form>
       <ul id="closetList" class="w-full"></ul>
     </main>
+    <style>
+      @media (min-width: 900px) {
+        main {
+          min-height: 600px;
+        }
+      }
+      @media (max-width: 899px) {
+        #routinesPanel {
+          position: static !important;
+          width: 100%;
+          max-width: 340px;
+          height: auto;
+          background: none;
+          box-shadow: none;
+          z-index: 1;
+          transform: none;
+          transition: none;
+          display: block;
+          border-radius: 0;
+          padding: 0;
+        }
+      }
+    </style>
     <script>
       const form = document.getElementById('addProductForm');
       const input = document.getElementById('productInput');
       const list = document.getElementById('closetList');
       let closet = [];
+      let expiryDates = {};
+      const products = [
+        "Fenty Gloss Bomb", "Maybelline Lash Sensational Mascara", "Rare Beauty Blush", "Glossier Boy Brow", "Urban Decay Naked Palette",
+        "Charlotte Tilbury Pillow Talk Lipstick", "NARS Radiant Creamy Concealer", "Too Faced Better Than Sex Mascara", "Benefit Hoola Bronzer",
+        "MAC Ruby Woo Lipstick", "L'Oreal True Match Foundation", "Tarte Shape Tape Concealer", "Clinique Moisture Surge", "Dior Addict Lip Glow",
+        "Laneige Lip Sleeping Mask", "NYX Butter Gloss", "Anastasia Brow Wiz", "Milk Makeup Hydro Grip Primer", "Pat McGrath Labs Lip Fetish",
+        "Estée Lauder Double Wear Foundation", "Huda Beauty Easy Bake Loose Powder", "Laura Mercier Translucent Setting Powder", "Fenty Beauty Pro Filt'r Foundation",
+        "Maybelline SuperStay Matte Ink", "Too Faced Born This Way Foundation", "Bobbi Brown Vitamin Enriched Face Base", "Smashbox Photo Finish Primer",
+        "Hourglass Ambient Lighting Powder", "KVD Beauty Tattoo Liner", "Stila Stay All Day Liquid Lipstick", "IT Cosmetics CC+ Cream",
+        "Revlon ColorStay Foundation", "ColourPop Super Shock Shadow", "Pixi Glow Tonic", "Bioderma Sensibio H2O Micellar Water",
+        "Neutrogena Hydro Boost Water Gel", "Olaplex No.3 Hair Perfector", "Sol de Janeiro Brazilian Bum Bum Cream", "Supergoop! Unseen Sunscreen",
+        "The Ordinary Niacinamide 10% + Zinc 1%", "CeraVe Hydrating Cleanser", "La Roche-Posay Anthelios Sunscreen", "Drunk Elephant C-Firma Day Serum",
+        "Kiehl's Ultra Facial Cream", "Fresh Soy Face Cleanser", "Garnier Micellar Cleansing Water", "Simple Kind to Skin Micellar Water",
+        "Aveeno Daily Moisturizing Lotion", "Eucerin Advanced Repair Cream", "Vaseline Lip Therapy", "Aquaphor Healing Ointment",
+        "Burt's Bees Beeswax Lip Balm", "EOS Lip Balm", "Moroccanoil Treatment", "Living Proof Perfect Hair Day Dry Shampoo",
+        "Batiste Dry Shampoo", "Redken All Soft Shampoo", "Paul Mitchell Tea Tree Special Shampoo", "Tresemme Keratin Smooth Shampoo",
+        "OGX Coconut Milk Shampoo", "SheaMoisture Curl Enhancing Smoothie", "DevaCurl SuperCream", "Not Your Mother's Beach Babe Texturizing Sea Salt Spray",
+        "John Frieda Frizz Ease Serum", "Pantene Pro-V Repair & Protect Shampoo", "Head & Shoulders Classic Clean Shampoo", "Herbal Essences Bio:Renew Shampoo",
+        "Lush Ocean Salt Face and Body Scrub", "Mario Badescu Drying Lotion", "Origins GinZing Eye Cream", "GlamGlow Supermud Clearing Treatment",
+        "Peter Thomas Roth Cucumber Gel Mask", "Clinique Take The Day Off Cleansing Balm", "Biossance Squalane + Vitamin C Rose Oil",
+        "Youth To The People Superfood Cleanser", "Glow Recipe Watermelon Glow Sleeping Mask", "Tatcha The Water Cream", "SK-II Facial Treatment Essence",
+        "Shiseido Ultimune Power Infusing Concentrate", "Sulwhasoo First Care Activating Serum", "Laneige Water Sleeping Mask", "Innisfree Green Tea Seed Serum",
+        "COSRX Advanced Snail 96 Mucin Power Essence", "Missha Time Revolution First Treatment Essence", "Etude House SoonJung pH 5.5 Relief Toner",
+        "Banila Co Clean It Zero Cleansing Balm", "Heimish All Clean Balm", "Dr. Jart+ Cicapair Tiger Grass Color Correcting Treatment"
+      ];
+      const autocompleteList = document.getElementById('autocompleteList');
+
+      input.addEventListener('input', function() {
+        const val = input.value.trim().toLowerCase();
+        if (!val) {
+          autocompleteList.style.display = 'none';
+          autocompleteList.innerHTML = '';
+          return;
+        }
+        const matches = products.filter(p => p.toLowerCase().includes(val));
+        if (matches.length === 0) {
+          autocompleteList.style.display = 'none';
+          autocompleteList.innerHTML = '';
+          return;
+        }
+        autocompleteList.innerHTML = matches.map(p => `<div class="autocomplete-item">${p}</div>`).join('');
+        autocompleteList.style.display = 'block';
+      });
+
+      autocompleteList.addEventListener('mousedown', function(e) {
+        if (e.target.classList.contains('autocomplete-item')) {
+          input.value = e.target.textContent;
+          autocompleteList.style.display = 'none';
+          autocompleteList.innerHTML = '';
+        }
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!autocompleteList.contains(e.target) && e.target !== input) {
+          autocompleteList.style.display = 'none';
+        }
+      });
 
       form.addEventListener('submit', function(e) {
         e.preventDefault();
@@ -49,18 +151,225 @@
       });
 
       function renderList() {
-        list.innerHTML = closet.map((item, idx) => `
-          <li class="flex justify-between items-center bg-white bg-opacity-80 rounded-lg px-4 py-2 mb-2 shadow">
-            <span>${item}</span>
-            <button onclick="removeItem(${idx})" class="text-[#D72660] font-bold hover:underline">Remove</button>
-          </li>
-        `).join('');
+        list.innerHTML = closet.map((item, idx) => {
+          const expiry = expiryDates[item] || '';
+          let daysLeft = '';
+          let expiredCircle = '';
+          let dateInput = `<button class='ml-2 px-2 py-1 border border-[#F4ACB7] rounded focus:ring-2 focus:ring-[#F4ACB7] bg-white' onclick='window.openDatePicker("${item}")'>${expiry ? expiry : 'Set Expiry'}</button>`;
+          if (expiry) {
+            const today = new Date();
+            const expDate = new Date(expiry);
+            const diff = Math.ceil((expDate - today) / (1000 * 60 * 60 * 24));
+            if (!isNaN(diff)) {
+              daysLeft = `<span class='ml-3 px-3 py-1 rounded-full text-sm font-semibold' style='background:linear-gradient(90deg,#fcb7d4,#f7a1c4);color:#fff;'>${diff > 0 ? diff + ' days left' : 'Expired'}</span>`;
+              expiredCircle = diff > 0 ? '' : `<span style='vertical-align:middle;margin-left:8px;width:18px;height:18px;border-radius:50%;background:#D72660;box-shadow:0 0 6px #D72660;display:inline-block;'></span>`;
+            }
+          }
+          return `
+            <li class="flex flex-col md:flex-row justify-between items-center bg-white bg-opacity-80 rounded-lg px-4 py-2 mb-2 shadow">
+              <div class="flex-1 flex flex-col md:flex-row items-center w-full">
+                <span class="mr-4 text-[#9D8189] font-semibold">${item}</span>
+                ${dateInput}
+                ${daysLeft}${expiredCircle}
+              </div>
+              <button onclick="removeItem(${idx})" class="text-[#D72660] font-bold hover:underline ml-2">Remove</button>
+            </li>
+          `;
+        }).join('');
       }
 
       window.removeItem = function(idx) {
         closet.splice(idx, 1);
         renderList();
       }
+
+      window.setExpiry = function(item, date) {
+        expiryDates[item] = date;
+      }
+
+      window.openDatePicker = function(item) {
+        // Create modal
+        const modal = document.createElement('div');
+        modal.style.position = 'fixed';
+        modal.style.left = 0;
+        modal.style.top = 0;
+        modal.style.width = '100%';
+        modal.style.height = '100%';
+        modal.style.background = 'rgba(0,0,0,0.18)';
+        modal.style.display = 'flex';
+        modal.style.alignItems = 'center';
+        modal.style.justifyContent = 'center';
+        modal.style.zIndex = 9999;
+        const box = document.createElement('div');
+        box.style.background = '#fff';
+        box.style.padding = '32px 24px';
+        box.style.borderRadius = '16px';
+        box.style.boxShadow = '0 8px 32px rgba(157,129,137,0.18)';
+        box.style.display = 'flex';
+        box.style.flexDirection = 'column';
+        box.style.alignItems = 'center';
+        const label = document.createElement('label');
+        label.textContent = 'Select Expiry Date';
+        label.style.fontWeight = '600';
+        label.style.marginBottom = '12px';
+        label.style.color = '#9D8189';
+        const input = document.createElement('input');
+        input.type = 'date';
+        input.value = expiryDates[item] || '';
+        input.style.border = '1.5px solid #fcb7d4';
+        input.style.borderRadius = '10px';
+        input.style.padding = '10px 14px';
+        input.style.fontSize = '1.08rem';
+        input.style.background = '#fff';
+        input.style.color = '#4a4e69';
+        input.style.marginBottom = '18px';
+        const saveBtn = document.createElement('button');
+        saveBtn.textContent = 'Save';
+        saveBtn.style.background = 'linear-gradient(90deg,#fcb7d4,#f7a1c4)';
+        saveBtn.style.color = '#fff';
+        saveBtn.style.fontWeight = '600';
+        saveBtn.style.border = 'none';
+        saveBtn.style.borderRadius = '999px';
+        saveBtn.style.padding = '10px 24px';
+        saveBtn.style.marginRight = '8px';
+        saveBtn.style.cursor = 'pointer';
+        const cancelBtn = document.createElement('button');
+        cancelBtn.textContent = 'Cancel';
+        cancelBtn.style.background = '#fff';
+        cancelBtn.style.color = '#D72660';
+        cancelBtn.style.fontWeight = '600';
+        cancelBtn.style.border = '1.5px solid #D72660';
+        cancelBtn.style.borderRadius = '999px';
+        cancelBtn.style.padding = '10px 24px';
+        cancelBtn.style.cursor = 'pointer';
+        cancelBtn.style.marginLeft = '8px';
+        const btnRow = document.createElement('div');
+        btnRow.style.display = 'flex';
+        btnRow.appendChild(saveBtn);
+        btnRow.appendChild(cancelBtn);
+        box.appendChild(label);
+        box.appendChild(input);
+        box.appendChild(btnRow);
+        modal.appendChild(box);
+        document.body.appendChild(modal);
+        saveBtn.onclick = function() {
+          expiryDates[item] = input.value;
+          document.body.removeChild(modal);
+          renderList();
+        };
+        cancelBtn.onclick = function() {
+          document.body.removeChild(modal);
+        };
+      };
+
+      document.getElementById('addRoutineBtn').onclick = function() {
+        // Modal for naming routine
+        const modal = document.createElement('div');
+        modal.style.position = 'fixed';
+        modal.style.left = 0;
+        modal.style.top = 0;
+        modal.style.width = '100%';
+        modal.style.height = '100%';
+        modal.style.background = 'rgba(0,0,0,0.18)';
+        modal.style.display = 'flex';
+        modal.style.alignItems = 'center';
+        modal.style.justifyContent = 'center';
+        modal.style.zIndex = 9999;
+        const box = document.createElement('div');
+        box.style.background = '#fff';
+        box.style.padding = '32px 24px';
+        box.style.borderRadius = '16px';
+        box.style.boxShadow = '0 8px 32px rgba(157,129,137,0.18)';
+        box.style.display = 'flex';
+        box.style.flexDirection = 'column';
+        box.style.alignItems = 'center';
+        const label = document.createElement('label');
+        label.textContent = 'Routine Name';
+        label.style.fontWeight = '600';
+        label.style.marginBottom = '12px';
+        label.style.color = '#9D8189';
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.placeholder = 'e.g. Morning Skincare';
+        input.style.border = '1.5px solid #fcb7d4';
+        input.style.borderRadius = '10px';
+        input.style.padding = '10px 14px';
+        input.style.fontSize = '1.08rem';
+        input.style.background = '#fff';
+        input.style.color = '#4a4e69';
+        input.style.marginBottom = '18px';
+        const saveBtn = document.createElement('button');
+        saveBtn.textContent = 'Create Routine';
+        saveBtn.style.background = 'linear-gradient(90deg,#fcb7d4,#f7a1c4)';
+        saveBtn.style.color = '#fff';
+        saveBtn.style.fontWeight = '600';
+        saveBtn.style.border = 'none';
+        saveBtn.style.borderRadius = '999px';
+        saveBtn.style.padding = '10px 24px';
+        saveBtn.style.marginRight = '8px';
+        saveBtn.style.cursor = 'pointer';
+        const cancelBtn = document.createElement('button');
+        cancelBtn.textContent = 'Cancel';
+        cancelBtn.style.background = '#fff';
+        cancelBtn.style.color = '#D72660';
+        cancelBtn.style.fontWeight = '600';
+        cancelBtn.style.border = '1.5px solid #D72660';
+        cancelBtn.style.borderRadius = '999px';
+        cancelBtn.style.padding = '10px 24px';
+        cancelBtn.style.cursor = 'pointer';
+        cancelBtn.style.marginLeft = '8px';
+        const btnRow = document.createElement('div');
+        btnRow.style.display = 'flex';
+        btnRow.appendChild(saveBtn);
+        btnRow.appendChild(cancelBtn);
+        box.appendChild(label);
+        box.appendChild(input);
+        box.appendChild(btnRow);
+        modal.appendChild(box);
+        document.body.appendChild(modal);
+        saveBtn.onclick = function() {
+          const name = input.value.trim();
+          if (name) {
+            routines.push({ name, products: [] });
+            document.body.removeChild(modal);
+            renderRoutines();
+          }
+        };
+        cancelBtn.onclick = function() {
+          document.body.removeChild(modal);
+        };
+      };
+
+      function renderRoutines() {
+        const routinesList = document.getElementById('routinesList');
+        routinesList.innerHTML = routines.map((routine, idx) => {
+          const closetOptions = closet.map(p => `<option value='${p}'>${p}</option>`).join('');
+          return `<div class='mb-6 p-4 bg-white rounded-lg shadow'>
+            <div class='font-bold text-[#9D8189] text-lg mb-2'>${routine.name}</div>
+            <form onsubmit='window.addProductToRoutine(event,${idx})' class='flex mb-2'>
+              <select class='border border-[#F4ACB7] rounded px-2 py-1 mr-2' required>
+                <option value='' disabled selected>Add product...</option>
+                ${closetOptions}
+              </select>
+              <button type='submit' class='bg-[#F4ACB7] text-black px-4 py-1 rounded font-semibold hover:bg-[#FFCAD4] transition'>Add</button>
+            </form>
+            <ul>
+              ${routine.products.map(prod => `<li class='text-[#4a4e69] py-1'>${prod}</li>`).join('')}
+            </ul>
+          </div>`;
+        }).join('');
+      }
+
+      window.addProductToRoutine = function(e, idx) {
+        e.preventDefault();
+        const select = e.target.querySelector('select');
+        const val = select.value;
+        if (val && !routines[idx].products.includes(val)) {
+          routines[idx].products.push(val);
+          renderRoutines();
+        }
+        select.value = '';
+      };
     </script>
   </body>
 </html>
