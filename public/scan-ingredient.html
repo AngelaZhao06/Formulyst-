@@ -7,17 +7,28 @@
     <title>Scan Ingredient</title>
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700|Montserrat:400,500,700&display=swap" rel="stylesheet">
     <style>
-        :root{--pink-1:#ffe0ec;--pink-2:#fcb7d4;--accent:#f672a7}
-        html,body{height:100%;margin:0;font-family:Montserrat,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial}
-        body{display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--pink-1) 0%,var(--pink-2) 60%,#f7a1c4 100%);overflow:hidden}
+                 :root{--pink-1:#D8E2DC;--pink-2:#FFE5D9;--pink-3:#FFCAD4;--pink-4:#F4ACB7;--pink-5:#9D8189;--accent:#f672a7}
+                 html,body{height:100%;margin:0;font-family:Montserrat,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial}
+                 body{display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, var(--pink-1) 0%, var(--pink-2) 25%, var(--pink-3) 50%, var(--pink-4) 75%, var(--pink-5) 100%);overflow:hidden;position:relative;}
+                 .makeup-bg {
+                     position: absolute;
+                     top: 0; left: 0; width: 100%; height: 100%;
+                     pointer-events: none;
+                     opacity: 0.12;
+                     z-index: 0;
+                     background: url('https://raw.githubusercontent.com/angelazhao06/formulyst-assets/main/makeup-bg.svg') center/cover no-repeat;
+                 }
         .back-btn{position:fixed;top:28px;left:28px;z-index:30;background:#fff;color:var(--accent);border:0;border-radius:999px;padding:10px 18px;font-weight:600;box-shadow:0 6px 18px rgba(0,0,0,0.08);cursor:pointer}
         .back-btn svg{vertical-align:middle;margin-right:8px;width:16px;height:16px}
         .panel{background:#fff;border-radius:20px;padding:44px 36px;box-shadow:0 10px 40px rgba(157,129,137,0.12);max-width:420px;width:88%;text-align:center;z-index:20}
         h1{font-family:'Playfair Display',serif;color:#22223b;margin:0 0 20px;font-size:2.1rem}
         .actions{display:flex;gap:12px;justify-content:center;margin-bottom:18px}
-        .actions button{background:var(--accent);color:#fff;border:0;padding:10px 18px;border-radius:10px;font-weight:600;cursor:pointer}
+        .actions button{background:var(--accent);color:#fff;border:0;padding:10px 18px;border-radius:10px;font-weight:600;cursor:pointer;transition:box-shadow 0.2s;}
+        .actions button:hover{box-shadow:0 4px 16px rgba(157,129,137,0.18);}
         label{display:block;color:#4a4e69;margin-bottom:8px;font-weight:500}
         input[type=text]{width:100%;padding:10px 12px;border-radius:10px;border:1px solid #eee}
+        .search-btn{transition:box-shadow 0.2s;}
+        .search-btn:hover{box-shadow:0 8px 32px rgba(246,114,167,0.35) !important;}
         /* decorative icons */
         .icon-left,.icon-right{position:fixed;top:50%;transform:translateY(-50%);opacity:.14;z-index:10}
         .icon-left{left:6vw;width:120px}
@@ -31,10 +42,11 @@
     </style>
 </head>
 <body>
-    <!-- back: explicit home link -->
+        <div class="makeup-bg"></div>
+        <!-- back: explicit home link -->
     <button class="back-btn" onclick="window.location.href='/public/index.html'" aria-label="Back to home">
-        <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M12.7 15.3a1 1 0 0 1-1.4 0l-5-5a1 1 0 0 1 0-1.4l5-5a1 1 0 1 1 1.4 1.4L8.42 9H17a1 1 0 1 1 0 2H8.42l4.3 4.3a1 1 0 0 1 0 1.4z"/></svg>
-        Back
+        <span style="font-size:2rem;font-weight:700;vertical-align:middle;margin-right:12px;">&lt;</span>
+        <span style="font-size:1.35rem;font-weight:700;vertical-align:middle;">Back</span>
     </button>
 
     <!-- decorative icons -->
@@ -51,24 +63,31 @@
     <svg class="heart h3" viewBox="0 0 32 29"><path d="M23.6,0c-2.7,0-5,1.7-6.6,4.3C15,1.7,12.7,0,10,0C4.5,0,0,4.5,0,10c0,9.2,16,19,16,19s16-9.8,16-19C32,4.5,27.5,0,23.6,0z" fill="#f7a1c4"/></svg>
 
     <main class="panel" role="main">
-        <h1>Scan Ingredient</h1>
-        <form id="scan-ingredient-form">
-            <div class="actions">
-                <button type="button" id="upload-picture">Upload Picture</button>
-                <button type="button" id="take-picture">Take Picture</button>
-            </div>
-            <div style="text-align:left">
-                <label for="brand-name">Name of Brand</label>
-                <input id="brand-name" name="brand-name" type="text" placeholder="Enter brand name">
-            </div>
-            <!-- preview -->
-            <div id="preview" style="margin-top:16px;text-align:center;display:none">
-                <p style="margin:0 0 8px 0;font-weight:600;color:#4a4e69">Preview</p>
-                <img id="preview-img" src="" alt="preview" style="max-width:100%;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,0.08)">
-            </div>
-            <!-- hidden file input -->
-            <input id="file-input" type="file" accept="image/*" style="display:none">
-        </form>
+                 <div style="margin-bottom:18px;">
+                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#4A3B36" style="width:64px;height:64px;display:block;margin:0 auto 12px auto;">
+                         <circle cx="12" cy="13" r="3.2" stroke="#4A3B36" stroke-width="2" fill="none"/>
+                         <rect x="4" y="7" width="16" height="12" rx="4" stroke="#4A3B36" stroke-width="2" fill="none"/>
+                         <rect x="9" y="3" width="6" height="4" rx="2" stroke="#4A3B36" stroke-width="2" fill="none"/>
+                     </svg>
+                     <h2 style="font-family:Montserrat,sans-serif;font-size:2rem;font-weight:700;color:#4A3B36;margin:0;">Take a Picture / Upload</h2>
+                 </div>
+           <form id="scan-ingredient-form">
+               <div class="actions">
+                   <button type="button" id="upload-picture">Upload Picture</button>
+                   <button type="button" id="take-picture">Take Picture</button>
+               </div>
+               <div style="text-align:left;margin-bottom:18px;">
+                   <input id="brand-name" name="brand-name" type="text" placeholder="Type product name (e.g. Fenty Gloss Bomb)" style="width:100%;padding:14px 12px;border-radius:14px;border:2px solid #eee;font-size:1.1rem;color:#4a4e69;background:#fff;margin-top:8px;">
+               </div>
+               <button type="submit" class="search-btn" style="width:100%;background:linear-gradient(90deg,#f672a7,#fcb7d4);color:#fff;font-weight:700;font-size:1.25rem;padding:16px 0;border:none;border-radius:999px;box-shadow:0 4px 16px rgba(246,114,167,0.18);margin-bottom:12px;cursor:pointer;letter-spacing:0.5px;">Search Product</button>
+               <!-- preview -->
+               <div id="preview" style="margin-top:16px;text-align:center;display:none">
+                   <p style="margin:0 0 8px 0;font-weight:600;color:#4a4e69">Preview</p>
+                   <img id="preview-img" src="" alt="preview" style="max-width:100%;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,0.08)">
+               </div>
+               <!-- hidden file input -->
+               <input id="file-input" type="file" accept="image/*" style="display:none">
+           </form>
     </main>
 
     <script src="/public/scan-ingredient.js"></script>
