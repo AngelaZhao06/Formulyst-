@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Closet | Formulyst</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <style>
+      body {
+        background: linear-gradient(135deg, #D8E2DC 0%, #FFE5D9 25%, #FFCAD4 50%, #F4ACB7 75%, #9D8189 100%);
+        min-height: 100vh;
+        font-family: 'Montserrat', sans-serif;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen flex flex-col items-center">
+    <header class="flex justify-between items-center w-full p-6">
+      <a href="index.html" class="flex items-center bg-white text-[#D72660] font-bold text-xl px-6 py-2 rounded-full shadow-lg hover:bg-[#FFE5D9] hover:text-[#F4ACB7] transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="#D72660" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+        </svg>
+  Back
+      </a>
+      <!-- Removed Log In and Sign Up buttons from closet page header -->
+    </header>
+    <main class="flex flex-col items-center w-full max-w-2xl mt-8">
+      <h1 class="text-5xl font-bold mb-6 text-[#9D8189]">My Beauty Closet</h1>
+      <form id="addProductForm" class="flex w-full mb-8">
+        <input type="text" id="productInput" class="flex-1 px-4 py-2 rounded-l-lg border border-[#F4ACB7] focus:outline-none" placeholder="Add a product..." required />
+        <button type="submit" class="bg-[#F4ACB7] text-black px-6 py-2 rounded-r-lg font-semibold hover:bg-[#FFCAD4] transition">Add</button>
+      </form>
+      <ul id="closetList" class="w-full"></ul>
+    </main>
+    <script>
+      const form = document.getElementById('addProductForm');
+      const input = document.getElementById('productInput');
+      const list = document.getElementById('closetList');
+      let closet = [];
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const value = input.value.trim();
+        if (value) {
+          closet.push(value);
+          renderList();
+          input.value = '';
+        }
+      });
+
+      function renderList() {
+        list.innerHTML = closet.map((item, idx) => `
+          <li class="flex justify-between items-center bg-white bg-opacity-80 rounded-lg px-4 py-2 mb-2 shadow">
+            <span>${item}</span>
+            <button onclick="removeItem(${idx})" class="text-[#D72660] font-bold hover:underline">Remove</button>
+          </li>
+        `).join('');
+      }
+
+      window.removeItem = function(idx) {
+        closet.splice(idx, 1);
+        renderList();
+      }
+    </script>
+  </body>
+</html>
